@@ -1,0 +1,518 @@
+
+.first{
+    visibility:hidden;
+}
+
+
+button{    margin: 20px;
+    border: inherit;
+    cursor: pointer;
+}
+h1{
+    overflow: hidden;
+    white-space: nowrap ;
+    text-overflow: ellipsis;
+    font-size: 50px;    
+}
+p{
+color: black;
+}
+h1:hover{
+overflow: visible;
+white-space: wrap;
+text-overflow: clip;
+}
+
+
+nav{
+    display: flex;
+}
+.one{
+background-color: #eee;
+position: relative;
+padding: 10px;
+width: 600px;
+float: left;
+}
+
+.one::after{
+    content: "";
+    position: absolute;
+    width: 20px;
+    height:100%;
+    right:0;
+    top:0;
+    background-color:cornflowerblue;
+
+}
+.one::before{
+    content: "";
+    width: 0;
+    height: 0;
+    left: -1.4rem;
+    top: 0;
+    position: absolute;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent cornflowerblue transparent transparent;
+}
+/*.one .pipeline{
+    position: absolute;
+    width: 20px;
+    height:100%;
+    right:0;
+    top:0;
+    background-color:cornflowerblue;
+}*/
+.user{
+    background-color: #eee;
+    width: 50px;
+    margin-right: 20px;
+    padding:10px;
+    height: 55.5px;
+    float: left;
+    font-size: 50px;
+    text-align: center;
+
+}
+.two{
+    background-color: green;
+}
+.three{
+    background-color: blue;
+}
+table{
+    border: 2px solid salmon;
+    background-color: #ddd;
+    border-spacing: 5px;
+    width: 100%;
+    padding: 5px;
+
+}
+table td{
+    border: 1px solid sandybrown;
+    
+}
+table td:hover{
+    border:3px dotted seagreen;
+}
+.parent{
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.flex{
+    background-image: linear-gradient(to right, red, green);
+    width: 600px;
+    padding: 20px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: row;
+
+}
+.flex div{
+  color: white;
+  width: 25%;
+  text-align: center;
+  padding: 20px;
+}
+/*
+--Block--
+Takes whole width if no width
+adds line break
+respects margin, padding, width, heigth (?)
+
+--Inline--
+no line break
+does not respect width height
+respects padding, margin from left, right
+
+--Inline block--
+allow elements before and after it
+respect padding, margin, width, height
+
+*/
+
+/*
+
+display: none => bt5fy el element we bt7ot  makano el element ely t7teh
+
+visibility: hidden => bt5fy el element bas mesh btbdel el amaken zy el display: none
+
+
+--Nesting--
+
+h2 p {
+    ...
+}
+
+div .special {
+    ...div gowah element 3ando class esmo special...
+}
+
+--Inherit--
+Inherit the properties of the parent
+
+
+--Overflow--
+overflow: hidden => ay 7aga ttl3 bara el boundaries t5tfy
+overflow: visible => ay 7aga ttl3 bara el boundaries t5tfy
+overflow: scroll
+overflow x, y
+
+--Break links into several line--
+word-break: break-word;
+
+--Cut text into dots after if it passed boundaries--
+ex:"You such a, I like it..."
+    
+    overflow: hidden;
+    white-space: nowrap ;
+    text-overflow: ellipsis;
+
+
+--POSITION--
+
+position:static (default value) => mesh byt7rk fe ay 7eta we mesh hyt2sr bel top wel bottom wel left wel right
+position: relative => el element byt7rk bona2n 3ala nafso 3ala 7asb el top wel bottom wel left wel right we mesh by2sr 3ala ay 7aga ma3ah
+position: absolute => el element byt7rk bon2n 3ala el parent beta3o mesh el workflow ely hwa feh
+try to set an element position to absolute and its parent to relative then remove relative from parent
+and check how it looks like
+
+position: fixed; => byfdl mashy ma3ak 7ata lama btscroll byb2a sabet fe makano
+position: sticky => byfdl makano we lama t3mel scroll we yb2a fo2 byfdl sabet zy el fixed
+
+The types of positioning in CSS are-
+1)static: this is the default value.
+2)sticky: the element is positioned based on the user's scroll position.
+3)fixed: the element is positioned related to the browser window.
+4)relative: the element is positioned relative to its normal position.
+5)absolute: the element is positioned absolutely to its first positioned parent.
+    
+
+
+-- Z-index --
+byrteb el elements men fo2 meen
+low fe 2 3andhom nafs el z-index hysht3'lo
+hytrtbo 7asb meen sabe2 men fel html
+
+mesh byhst3'l men 3'er position
+
+
+--Vendor Prefixes--
+
+-webkit => Chrome, Safari, new Opera
+-moz => Firefox
+-ms => Edge, IE
+-o => Old versions of Opera
+
+--Box Shadow--
+
+H-SHadow | V-Shadow | Blur | Spread | Color | Inset
+
+
+
+-- !Important --
+btoverride ay 7aga (htoverride el inline style maslan)
+
+--Margin Collapse--
+vertical margin only that collapse
+(margin-top: 20, margin-bottom:20) wa7ed menhom bas ely bysht3'l
+
+bigger margin win
+margin collapsing with no elements in between
+
+nesting  does not prevent collapsing
+
+
+--CSS Variables and Trainings--
+
+local variables btoverride el global variables
+var(vairable name, fallback value)
+
+fallback value: backup value
+btktb kda
+:root{
+    --mainColor: blue;
+}
+b3dha btst3mlha kda fe property maslan
+color: var(--mainColor)
+
+
+--Flexbox--
+
+    --parent properties--
+    display: flex;
+    flex-direction: row
+    flex-wrap: nowrap [default]
+    flex-flow: flex direction + flexwrap
+    justify-content: flex-start (horizontal)
+    align-items: stretch (vertical)
+    align-content: by5od el content kolo zat nafso
+
+
+    --child properties--
+    flex-grow: 0 => default 
+    1 => hygrow kolhom ad b3d
+    mmken t5ly 3and element tany be 2
+    b7es yb2a hwa akbr men e5wato
+    
+    flex-shrink:0 => default
+    3aks flex-grow
+
+    order:0 ->default
+    bt7ded order el element fel beta3 dh
+
+    flex-basis: auto => el far2 beno we ben el width
+    en leh 3elaka ben el width wel height
+    it respects max-wdith
+
+    flex-shorthand: flexgrow flexshrink flexbasis
+    
+
+    align-self: auto => default 
+    it overrides align items in parent
+
+
+    --Filters--
+    filter:grayscale(100%)
+
+    --Gradients--
+    linear-gradient(direction || Angel, Color stop1 (100px, 100%..etc), color stop2,...)
+
+    linear-gradient(
+        to right,
+        blue 20%,
+        green 20%,
+        green 40%,
+        green 60%,
+        violet 60%,
+        violet 80%,
+        brown 100%
+        );
+
+
+    --Caret Color and Pointer--
+    pointer-event: none; => not clickable anymore
+
+    --Grid--
+    Parent
+        display: grid | inline-grid
+        grid-template-columns: number of columns (px, %, auto, repeat, fr, mix)
+        grid-template-rows: bytlob el height bet3hom
+        gap: row-gap column-gap
+        justify-content: flex-end;
+
+        grid-template-areas: "ROW CONTENT" "ROW CONTENT" "ROW CONTENT"
+        gwa kol row content btdy kol grid-area ht5od columns ad eh
+
+    Child
+    grid-column: 1/5 (hya5od 1,2,3,4 columns)
+    => e5tsar le grid-column-start:1 ;
+        grid-column-end:7 ;
+    grid-column: span 4 (hya5od 4 columns bas)
+    grid-column: 2 -> hybtdy men column 2
+
+    grid-row: 1/3 hy5od awel we tany row
+
+    grid-area: [grid row start] [grid column start] [grid row end] [grid column end]
+    
+    minmax(minimum in px, max in px)
+
+
+
+    --2D Transform--
+    transform: scale(-ve) (flipped)
+
+    rotate: (deg=> degree, rad, grad, turn)
+    transalate(x,y)
+    skewX,Y,Z
+    matrix(scaleX,skewY,SkewX, ScaleY, TransalateX,TranslateY) 
+    
+    
+    --3D Transform--
+
+
+
+
+    --ANIMATION--
+    animation-name: change-color;
+    animation-duration: 3s;
+    @keyframes change-color{
+        from {
+        background-color:red;
+        }
+        to{
+            background-color:blue;
+        }
+    }
+    animation-fill-mode: forward hysbt 3ala el style ely hysbt 3aleh fel a5er
+    
+    
+    --Selectors Reference--
+    * => All
+    div => All divs
+    div p => all Ps in all divs
+    .div => class name
+    #id => id
+    .parent .child => all child classes inside parent classes
+    .class-one.class-two => two classes inside each other
+    .class-name div => any div inside class-name
+    .class-name div, .class-name p => grouping
+    Element.class-name => any element that has that specific class-name
+        p.class-name => any paragraph
+    
+    .parent > .child => Direct Child
+        el ebn el mobasher, mafesh ay content 2ow element tany benhom
+
+    Element + Other Element [ div + p ] el paragraph lazem yb2a ablo mobashartn div
+    Element ~ Other Elements => siblings from the same parent
+    [Attribute]=> [title]
+    Element[Attribute]=> div[title]
+    [Attribute=Value]=> div[title="S01"]
+    [Attribute~=Value] => Contains a Word
+    [Attribute*=Value] => Contains a String
+    [Attribute^=Value] => Start with a String
+    :first-child => awel child men el parent
+    p:first-child => awel child no3o p men el parent
+    :last-child => last child men el parent
+    :first-of-type => el awal men no3o
+    :last-of-type => el a5er men no3o
+    :only-child => el ebn el wa7ed
+
+    :not(Selector)
+        ex: ay paragraph ma3ada el first child
+        p:not(:first-child){
+            color:red;
+        }
+    :nth-child()
+    
+    :root => el root element
+    :checked => ay element m3molo checked
+        input[type="checkbox"]:checked + label
+    :empty
+    :disabled
+    :required
+
+
+
+    --Responsive--
+    @media Condition {
+    
+    }
+
+    @media (max-width:1000px){
+        .parent->div{
+            background-color:blue;
+        }
+    }
+    @media (min-width:1000) and (max-width:2000px){
+        .parent->div{
+            background-color:blue;
+        }
+    }
+
+    */
+    .grid{
+        display:grid;
+        background-color: #ddd;
+        margin:20px auto;
+        width: 800px;
+        height: 500px;
+        grid-template-columns: repeat(4,auto);
+        grid-template-rows: repeat(3,auto);
+        row-gap: 20px;
+        column-gap: 10px;
+        justify-content: space-between;
+        align-content: space-between;
+    }
+    .grid div{
+        width: 50px;
+        text-align: center;
+        background-image: linear-gradient(to right, red , yellow);
+        color: white;
+    }
+    *{
+        box-sizing: border-box;
+        padding:0;
+        margin:0;
+        color: white;
+    }
+    .page{
+        height: 100vh;
+        background-color: #b0d9d9;
+        display: grid;
+        grid-template-columns: repeat(autofill,minmax(200px,1fr));
+        grid-template-rows: 50px auto 50px;
+        grid-template-areas: "logo logo logo nav nav nav nav nav nav nav"
+         "cont cont cont cont cont cont cont cont side side"
+         "foot foot foot foot foot foot foot foot foot foot"
+         ;
+
+
+    }
+    @keyframes change-gradient{
+        from{
+            background-image: linear-gradient(to right, blue, red);
+
+        }
+        to{
+            background-image: linear-gradient(to right, red, blue);
+        }
+    }
+h2{
+    padding-top: 10px;
+    text-align: center;
+    grid-area: logo;
+}
+h2 div{
+    animation-name: change-gradient;
+    animation-duration: 6s;
+}
+    nav{
+        grid-area: nav;
+        background-color:#025373 ;
+        padding: 15px;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+}
+    nav ul{
+        width: 100%;
+        list-style-type: none;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    nav ul li{
+        cursor: pointer;
+    }
+    section{
+        grid-area: cont;
+    }
+    aside{
+        grid-area: side;
+        text-align: center;
+        background-color: #BF6586;
+    }
+    footer{
+        grid-area: foot;
+    }
+    @media (min-width:768px) and (max-width:991px)
+    {
+        h2{
+        background-color:hotpink ;
+        }
+    }
+    @media (min-width:992px)
+    {
+
+    }
+    @media (min-width:1200px)
+    {
+
+    }
+    @media (min-width:1400px)
+    {
+
+    }
+    
