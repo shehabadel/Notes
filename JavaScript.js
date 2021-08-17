@@ -283,7 +283,7 @@ document.write(card);
     window.location.href -> returns the hyperlink of the page
     window.location.hostname -> returns the hostname
 
-    --regex--
+    --regex-- (better check a cheat sheet)
     syntax
     /pattern-string/flags
     forward-slash -> defines start and end of pattern-string
@@ -292,7 +292,34 @@ document.write(card);
     or whether you want just the first result or all the results
 
     set and ranges
+    \d -> digits
+    \w -> selects all characters and digtis
+    \W -> selects all white spaces and symbols (anything but characters and digits)
+    \s -> selects white spaces only
+    \S -> selects all characters,digits, and symbols (anything but white spaces)
 
+    Quantifiers
+    select a value multiple times, decide how many times a value should be
+    selected.
+    for example: [\d]{3} 
+    [\d]{2,4} -> between 2 and 4
+
+    ^ -> starts with
+    $ -> ends with
+
+    methods
+    str.search(pattern)--> returns string position of the first match
+    pattern.test(str) --> returns true if there is a match and returns false if there is no match
+    str.match(pattern)--> returns the matched string. if the flag is not set to global then it returns
+    only the first match, but if the flag is global then it returns array of matches
+
+    in order to set a flag global --> add /g at the end of the pattern
+    for example: var pattern = /pen/g;
+    add insensitive flag to find upper and lower case matches /pen/gi;
+
+    use the RegExp class
+
+    var pattern = new RegExp('pen','gi');
 
 */
 var superman = {
