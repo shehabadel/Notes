@@ -321,6 +321,313 @@ document.write(card);
 
     var pattern = new RegExp('pen','gi');
 
+    pattern for checking sites
+    var pattern = /www\.[\w]+\.com$/g
+
+    Form Validation using regex
+    var username=document.getElementById('username);
+    var loginForm = document.getElementById('login-form');
+    var usernameErrPara = document.getElementById('username-err');
+
+    username.addEventListener('input',function(e)
+    {
+        var pattern = /^[\w]{6,8}$/;
+        var currentValue = e.target.value;
+
+        var valid = pattern.test(currentValue);
+
+        if(valid)
+        {
+            usernameErrPara.style.display='block';
+        }
+        else{
+            username.style.display='none';
+        }
+    });
+
+    --OOP in Javascript--
+    var video ={
+        videoName: "Intro to JS",
+        fileFormat: "Mp4",
+        duration:"2:48",
+        owner:"Qaifi",
+        getVideoName: function(){
+            return this.videoName
+        },
+        getFileFormat : function(){
+            return this.fileFormat
+        }
+        getDuration: function(){
+            return this.duration;
+        }
+        getOwner: function(){
+            return this.owner;
+        }
+    }
+
+    this keyword-> referes to the current context, it referes
+    to a single object, and usually used inside a function or a method
+    to access properties and methods which are a part of the object
+    which is associated with the function
+
+    --Constructor--
+
+    var person ={
+        name:'Jack',
+        yearOfBirth:1990,
+        job:'Secret Agent'
+    }    
+
+    function Person(pName, pYearOfBirth, pJob)
+    {
+        this.name=pName;
+        this.yearOfBirth= pYearOfBirth;
+        this.job=pJob
+
+        this.calculateAge = function(){
+            console.log(2019-this.yearOfBirth);
+        }
+    }
+    var john = new Person('John',1992,'Pilot');
+    john.calculateAge();
+
+    --Inheritance--
+        --prototype implementation--
+        
+        
+    var person ={
+    name:'Jack',
+    yearOfBirth:1990,
+    job:'Secret Agent'
+    }    
+
+function Person(pName, pYearOfBirth, pJob)
+{
+    this.name=pName;
+    this.yearOfBirth= pYearOfBirth;
+    this.job=pJob
+}
+Person.prototype.calculateAge= function () {
+    console.log(2021-this.yearOfBirth);
+}
+Person.prototype.updateYearofBirth= function(birthYear){
+    this.yearOfBirth=birthYear;
+}
+Person.prototype.lastName="Claire";
+var john = new Person('john', 1992, 'pilot');
+john.calculateAge();
+
+-HTTP Requests and Posts--
+requests to backend are sent using HTTP. it is a protocol which
+allows the fetching of data from the server. it is the foundation
+of any data exchange on the web
+
+Clients and servers communicate by exchanging individual
+messages. The messages sent by the client are called requests
+the messages sent by the server as an answer called responses
+
+
+HTTP Methods
+GET-> used to get some data from the backend. The data can be
+JSON object or a JSON Array
+
+POST-> used to create new data entries on the backend. It accepts
+some data in the request and takes that data to the backend for
+creation
+
+PUT-> used to update an existing data entry on the backend.
+It accepts some data in the request and takes that data to the
+backend for updating
+
+DELETE-> used to delete an existing data entry on the backend
+
+
+Request Method: GET
+it tells the request needs to return some data
+
+URL: "https://jsonplaceholder.typicode.com/todos"
+the complete URL for the HTTP call
+
+Backend URL: "https://jsonplaceholder.typicode.com"
+It points to the backend server
+
+TODO Endpoint:"/todos"
+it tells the backend what is requested by the frontend
+
+
+-RESPONSES Codes--
+200-> Sucess
+400-> Bad request
+401-> Unauthorized
+404-> Not found
+500-> Something went wrong(failed at the backend and the request cannot be completed)
+
+
+--Introduction to JSON--
+Javascript Object Notation
+text format that makes it easy to share data between clients and servers
+its origin is based on how javascript object works so thats why it looks like
+a javascript object
+
+var myObj ={
+    "name":'John',
+    "age":28
+}
+var mArr=[
+    {
+    "name":'Ahmed',
+    "age":26
+},
+{
+    "name":'Mohamed',
+    "age":24
+},
+{
+    "name":'Adel',
+    "age":59
+},
+{
+    "name":'Shehab',
+    "age":21
+}
+]
+console.log(mArr[0].age);
+
+console.log(JSON.stringify(myObj)); -> converts JSON to string
+console.log(JSON.parse(myObj)); -> converts string to JSON object
+--JSON.stringify() ignores undefined values and any functions
+it accepts string,number, boolean, array, object, null
+
+--Introduction to AJAX--
+AJAX is a short form for Asynchronous Javascript and XML.
+It allows web pages to be updated asynchronously by exchanging
+data with the backend. This makes it possible to update parts
+of a web page without reloading the whole page.
+
+Initially AJAX was used to send and receive XML because that
+was how the data received from the backend in the old days.
+But now it can be used to send/receive JSON objects which pretty
+common these days
+
+Asynchronous Code
+-> Say there is a line of code which takes 5 seconds to execute
+this would just mean that javascript will have to wait 5 seconds
+before it can move on to execute more lines of code
+
+To avoid this there is another way to execute a specific part
+of code such that the execution starts and it runs in the 
+background which allows rest of the code to be executed
+Running code in the background is called Asynchronous Execution
+
+XMLHttpRequest Object
+AJAX uses a browser built-in XMLHttpRequest object to make
+requests to the backend server. This gave a simple and standard
+way to make HTTP requests from Javascript to get content and update
+the HTML page
+
+function getTODOList(){
+    var http = new XMLHttpRequest();
+    http.open('GET','https://jsonplaceholder.typicode.com/todos/',true);
+    http.send();
+}
+getTODOList();
+
+
+--Handling HTTP Requests--
+readyState Property
+
+The XMLHTTPRequest object gives us access to another property
+called readyState. The readyState property holds the status of
+the XMLHTTPRequest
+
+There are several status for the request
+
+-UNSENT-> means that the request has been initiated but open()
+not called yet. It is represented by the value o.
+-OPENED-> means that open() has been called. it is represented by value 1
+-HEADERS RECEIVED: means that send() has been called. it is represented by value 2
+-LOADING: means that the request is being processed. It is represented by the value 3
+-DONE: means that the request is completed and the response is ready. It is represented by the value 4
+
+-OnReadyStateChange- property
+XMLHTTPRequest also gives us access to another property called
+onreadystatechange. the onreadystatechange property defines
+a function to be executed when the readyState changes
+
+function getTODOList(){
+    var http = new XMLHttpRequest();
+    http.onreadystatechange = function(){
+        if(this.readyState===4)
+        {
+            if(this.status===200)
+            {
+            console.log('Response Received');
+            console.log(JSON.parse(this.responseText));
+            }else
+            {
+                console.log("Call failed");
+            }
+        }
+    }
+    http.open('GET','https://jsonplaceholder.typicode.com/todos/',true);
+    http.send();
+}
+getTODOList();
+
+
+--Working with HTTP Response Data--
+
+function createTODODynamically(id, title)
+{
+    var newListElement = document.createElement('li');
+    var textNode = document.createTextNode(title);
+    newListElement.appendChild(textNode);
+    newListElement.id = id;
+    return newListElement;
+}
+
+function getTODOList(){
+    var http = new XMLHttpRequest();
+    http.onreadystatechange = function(){
+        if(this.readyState===4)
+        {
+            if(this.status===200)
+            {
+            console.log('Response Received');
+            console.log(JSON.parse(this.responseText));
+            var response = JSON.parse(this.responseText);
+            for(let i=0; i<7; i++)
+            {
+                console.log(createTODODynamically(response[i].id,response[i].title));
+            }
+            }else
+            {
+                console.log("Call failed");
+            }
+        }
+    }
+    http.open('GET','https://jsonplaceholder.typicode.com/todos/',true);
+    http.send();
+}
+getTODOList();
+
+
+--Making HTTP Post Requests--
+
+function createTODOItemAtBackend(){
+    var http = new XMLHttpRequest();
+    http.open('POST','https://jsonplaceholder.typicode.com/todos/', true);
+    var obj = JSON.stringify({
+        "userId":1,
+        "title":"Hello daft punk!",
+        "completed":false;
+    });
+    http.send();
+}
+
+
+
+
 */
 var superman = {
  
