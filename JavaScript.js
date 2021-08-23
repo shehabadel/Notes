@@ -627,6 +627,270 @@ function createTODOItemAtBackend(){
 
 
 
+----ES6----
+Babel: a preprocessor that converts ES6+ code into backward compatible versions
+of javascript that can be run by older browsers.
+
+let-> replacement for var (block scopped)
+const-> constant values
+
+Template Strings
+it is just a string which allows embedding expressions inside it to create a template
+you dont use single or double quotes, only backtick ``
+const mGreetings = `Hello${name}`
+
+--Arrow Functions--
+const greetings = (name)=>{
+    return (`Welcome ${name}`);
+}
+console.log(greetings('john'));
+
+
+--Spread Operator--
+Spread syntax allows arrays and objects to be expanded into:
+-elements in case of array
+-key-value pairs in case of object
+
+let m1=[1,2,3,4,5];
+let m2=[...m1];
+
+console.log([...m1]);
+console.log(m2)-> 1,2,3,4,5
+
+let mArr1 = [1,2,3,4,5];
+let mArr2 = [6,7,8]
+let mArr3 = [...mArr1, ...mArr2]; == mArr3 = mArr1.concat(mArr2);
+
+let mObj1={
+    name:'John'
+}
+let mObj2={
+    age:28;
+}
+let mObj3 = {...mObj1, ...mObj2}
+
+--Destructuring--
+allows us to unpack arrays or objects into a bunch of variables
+which makes working with arrays and objects a bit more convenient
+
+let [a,b]=[1,2,3,4,5];
+let {name,age}={firstName:'John', lastName:'Wick', age:30}
+
+let nameArr=['John','Manuel','Lark'];
+let [firstName, middleName] = nameArr;
+//firstName = John
+//middleName = Manuel
+
+const person ={
+    firstName: 'John',
+    middleName: 'Manuel',
+    lastName: 'Lark',
+    age:28
+}
+let {firstName, lastName}= person;
+
+--Array functions: map()--
+
+It iterates the array and we can pass a callback function
+to perform some operation on the each array item.
+the updated values can be returned by the callback function
+to create a new array
+
+const mArr=[1,2,3,4,5];
+let newArr=[];
+const doubleValues =(item)=>{
+    return item*2;
+}
+for(let i=0; i<mArr.length; i++)
+{
+    newArr.push(doubleValues(mArr[i]));
+}
+
+let newArr = mArr.map((item)=>
+{
+    return item * 2;
+})
+let newArr = mArr.map((data, pos)=> {
+    console.log(`item at pos: ${pos} is ${data}`);
+})
+
+
+let mArr= [
+    {
+        name:'Smith',
+        age:20,
+        experience:1
+    },
+    {
+        name:'Bob',
+        age:10,
+        experience:2
+    },
+    {
+        name:'Arnold',
+        age:3,
+        experience:7
+    }
+]
+let newArr = mArr.map((data)=>
+{
+    return {
+        name: data.name,
+        age: data.age*data.experience
+    };
+})
+console.log(newArr);
+
+--Array function: reduce()--
+just like map(), reduce() also iterates through the entire
+array and it accepts a callback function to perform some
+action on the array element. the difference here is that
+reduce() passes the result of the callback from one iteration
+to the next one. this callback result is called accumlator
+the accumulator can be pretty much anything(integer, string, object, or an array)
+and must be instantiated and passed when calling reduce()
+
+arr.reduce((acc, item)=>{
+    //callback function body
+}, acc_default_value)
+
+
+const result= numArr.reduce((acc, item)=>{
+    console.log(acc);
+    return acc + item;
+},0)
+console.log(result);
+
+--Array Function: filter()--
+it iterates through the array to create a new array. You can decide
+which elements should be added in the new array based on some conditions
+
+arr.filter(item => {
+    //Return true/false to add/skip the current item
+})
+
+
+let numArr = [1,2,3,4,5,6,7];
+const resultArr=numArr.filter((item)=>
+{
+    return item % 2 === 0;
+})
+console.log(resultArr);
+
+const resultArr=mArr.filter((item)=>
+{
+    return item.experience > 1;
+})
+console.log(resultArr);
+
+
+--Array Functions: find() and findIndex()--
+find(): used to seard for an element in the array that
+matches some condition, it returns the first element that matches the condition
+
+-findIndex(): like find but returns index of the element
+
+const result= numArr.find(item => {
+    return item % 2 === 0;
+})
+
+console.log('result', result);
+
+--Classes--
+
+class ClassName{
+    constructor(){
+        //initialize the properties here
+    }
+    methods1=()=>{
+        //method body
+    }
+}
+
+class Person {
+    constructor(name , birthYear){
+        this.name =  name;
+        this.yearOfBirth = birthYear;
+    }
+
+    getDetails = ()=>
+    {
+        return `${this.name}  ${this.yearOfBirth}`;
+    }
+}
+
+var john = new Person("John", 1992)
+console.log(john.getDetails());
+
+--Inheritance--
+
+class ParentClass{
+    //Class body
+}
+
+class ChildClass extends ParentClass{
+    constructor(){
+        super() -> must call super() and pass its paramaters related to the parent class
+    }
+}
+
+
+--Callbacks and Promises--
+we give the asynchronous operation a function to call when it is completed
+this function is called a Callback Function.
+
+let list = []
+$.get('',(response)=>{
+    console.log(response);
+})
+
+--Introduction to promise--
+used to handle asynchronous result of an operation.
+it defers the execution of a code block until an asynchronous request
+is completed. this way, other operations can keep running without interruption
+
+A promise has 3 states:
+-Pending: it means the operation is going on.
+-Fullfilled: it means the operation was completed.
+-Rejected: it means the operation did not complete and an error can be thrown
+
+
+--Working with promises--
+to create a promise
+    syntax:
+    const mPromise = new Promise((resolve, reject)=>
+    {
+        //Promise body
+        //Call resolve() when the operation is complete
+        //Call reject() when the operation is failed
+    })
+
+    const postListPromise = new Promise((resolve, reject)=>{
+        $.get('',(data)=>{
+            resolve(data);
+        }).fail(err =>{
+            reject(new Error(`Call failed for GET POST List Request ${err.status}`))
+        })
+    })
+
+    then() method is called when the resolve() is executed. It receives data passed
+    in the resolve() method as arguments.
+
+    catch() method is called when the reject() method is executed.
+    it receives the data passed in the reject() method as arguments
+
+    postListPromise
+    .then((response)=>{ //whatever gets passed in the resolve() function is the parameter inside the anonymous function of then.( () )
+        console.log("Success");
+        console.log('then response', response);
+    })
+    .catch((error)=>{
+        console.log("Failed");
+        console.log(error);
+    })
+
+    --Chaining Promises--
+ //Check it later after jQuery
 
 */
 var superman = {
