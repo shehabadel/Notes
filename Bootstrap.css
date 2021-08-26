@@ -1,0 +1,229 @@
+/*
+Bootstrap advantages
+-> Increase development speed
+-> Avoid Repetitions
+-> Has a wide community
+-> Customizable
+-> Ensure cross browser compatibility
+
+New in Bootstrap 5
+-> jQuery isn't required anymore
+-> Dropped support for IE
+-> RTL support
+-> The use of JavaScript is minimized in favor of CSS
+-> almost each option is avaliable as data-attribute (it can be set manually without JS)
+-> Enhanced Grid System, modularity, customization
+    -> columns are no longer position: relative
+    -> Vertical spacing classes have been added
+    -> form layout options have been replaced with the new grid system
+-> New components
+-> Enhanced Icons (SVG Icon Library)
+
+
+--It is better to check documentation--
+
+--Bootstrap Grid System--
+it allows users to create responsive layout
+we can use it to rearrange layout of the website
+depending on its screen size
+
+using its grid system we can create page which will have
+different layout on desktop
+and tablet/mobile devices
+
+It mainly uses 12 columns
+
+In order to create a layout we use
+-Container
+-Row
+-Columns
+
+Grid: Breakpoints
+
+Breakpoint              Class infix         Dimensions
+
+X-Small                 xs                  0-576px
+Small                   sm                  >=576px
+Medium                  md                  >=768px
+Large                   lg                  >=992px
+Extra large             xl                  >=1200px
+Extra extra large       xxl                 >=1400px
+
+Example:
+
+col-xxl-1: if we are on screensize xxl, the col should have a width of 1 from the 12 columns
+in our grid system
+col-xl-2: if we are on screensize xl, the col shoud have a width of 2 from the the 12 columns
+in our grid system
+col-xs-12: if we are on screensize xs, the col shoud have a width of 12 from the the 12 columns
+in our grid system ( takes all the width of the page )
+
+
+--Classes--
+-Container-
+class="container" -> have margins on right and left
+class="container-fluid" -> takes full width (no margins)
+class="container-md" -> mixed between both
+
+-Padding-
+py: padding on y axis (vertical)
+    class="py-5" -> padding top and bottom 5rem
+p: padding
+    class="p-3" -> padding 3rem
+
+-Margin-
+mb: margin-bottom
+    class="mb-2" -> margin bottom 2rem
+
+-Background Color-
+bg-primary: background color blue
+
+-Rows & Columns-
+row: row in grid system
+column: column in grid system
+
+-Gutters-
+allows us to work with spacing between rows and columns
+without any gutter there is default padding
+Gutters are the padding between your columns, used to responsively space
+and align content in the Bootstrap grid system.
+
+class="gx-0" -> gutter x-axis is 0
+???
+
+
+--Buttons--
+    <button type="button" class="btn btn-primary">Primary</button>
+    <button type="button" class="btn btn-secondary">Secondary</button>
+    <button type="button" class="btn btn-success">Success</button>
+    <button type="button" class="btn btn-danger">Danger</button>
+    <button type="button" class="btn btn-warning">Warning</button>
+    <button type="button" class="btn btn-info">Info</button>
+    <button type="button" class="btn btn-light">Light</button>
+    <button type="button" class="btn btn-dark">Dark</button>
+    <button type="button" class="btn btn-link">Link</button>
+
+    -Outline-
+    <button type="button" class="btn btn-outline-primary">Primary</button>
+    <button type="button" class="btn btn-outline-secondary">Secondary</button>
+
+    -Sizing-
+        <button type="button" class="btn btn-link btn-lg">Link</button>
+        <button type="button" class="btn btn-link btn">Link</button>
+        <button type="button" class="btn btn-link btn-sm">Link</button>
+    
+    -Button Groups-
+    Buttons grouped together
+    <div class="my-5">
+        <h2>Button Groups</h2>
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-primary">Left</button>
+            <button type="button" class="btn btn-primary">Middle</button>
+            <button type="button" class="btn btn-primary">Right</button>
+        </div>
+    </div>
+
+
+--Cards & Panels
+Allows to wrap some content and make it more visibile
+
+            <div class="col-6 col-sm-12 mt-5">
+                <div class="card shadow-lg">
+                    <div class="card-header">Featured awy ba2a ya bob</div>
+                    <div class="card-body">
+                        <h5 class="card-title">Title awy ba2a</h5>
+                        <p class="card-text">Text beta3 el card</p>
+                        <a href="https://www.twitter.com/shehabirl" class="btn btn-primary">Follow me on twitter</a>
+                    </div>
+                    <div class="card-footer">Footer hena</div>
+                </div>
+            </div>
+
+
+            -Card with image-
+            <div class="col-sm-6">
+        <div class="card my-3">
+            <img class="card-img-top"
+            src="D:\Projects\Musicplayer\img\logo2.png">
+        <div class="card-body">
+            <p class="card-text">Touch, sweet touch.</p>
+        </div>
+        </div>
+        </div>
+
+-Card Groups-
+ class="container">
+<div class="card-group my-3">
+<div class="card bg-primary text-white mx-3">
+    <div class="card-header">Header 1</div>
+    <div class="card-body">
+        <p class="card-text">Card 1</p>
+    </div>
+    <div class="card-footer">Footer 1</div>
+</div>
+<div class="card bg-secondary text-white mx-3">
+    <div class="card-header">Header 2</div>
+    <div class="card-body">
+        <p class="card-text">Card 2</p>
+    </div>
+    <div class="card-footer">Footer 2</div>
+</div>
+<div class="card bg-success text-white mx-3">
+    <div class="card-header">Header 3</div>
+    <div class="card-body">
+        <p class="card-text">Card 3</p>
+    </div>
+    <div class="card-footer bg-transparent border-warning">Footer 3</div>
+</div>
+</div>
+</div>
+
+--Typography--
+
+Look at the documentation, not really different from HTML
+
+--Utilities--
+
+Notation
+Spacing utilities that apply to all breakpoints, from xs to xxl, have no breakpoint abbreviation in them. This is because those classes are applied from min-width: 0 and up, and thus are not bound by a media query. The remaining breakpoints, however, do include a breakpoint abbreviation.
+
+The classes are named using the format {property}{sides}-{size} for xs and {property}{sides}-{breakpoint}-{size} for sm, md, lg, xl, and xxl.
+
+Where property is one of:
+
+m - for classes that set margin
+p - for classes that set padding
+Where sides is one of:
+
+t - for classes that set margin-top or padding-top
+b - for classes that set margin-bottom or padding-bottom
+s - (start) for classes that set margin-left or padding-left in LTR, margin-right or padding-right in RTL
+e - (end) for classes that set margin-right or padding-right in LTR, margin-left or padding-left in RTL
+x - for classes that set both *-left and *-right
+y - for classes that set both *-top and *-bottom
+blank - for classes that set a margin or padding on all 4 sides of the element
+Where size is one of:
+
+0 - for classes that eliminate the margin or padding by setting it to 0
+1 - (by default) for classes that set the margin or padding to $spacer * .25
+2 - (by default) for classes that set the margin or padding to $spacer * .5
+3 - (by default) for classes that set the margin or padding to $spacer
+4 - (by default) for classes that set the margin or padding to $spacer * 1.5
+5 - (by default) for classes that set the margin or padding to $spacer * 3
+auto - for classes that set the margin to auto
+
+
+--Alerts and Toasts--
+
+--Carousal Sliders--
+
+--Scrollspy--
+bt3rf enta feen technically
+
+--Navbars, navs, and tabs--
+
+--Offcanavas--
+The side menu
+
+--Icons--
+*/
