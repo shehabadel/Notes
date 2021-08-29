@@ -6,14 +6,103 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="Bootstrap.css">
+    <link rel="stylesheet" href="owl.carousel.min.css">
     <title>Document</title>
-
-
 </head>
 
-<body class="py-5">
-    <h2>Bootstrap tutorial</h2>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark custom-nav">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="https://www.twitter.com/shehabirl" target="_blank"><i><img style="width: 50px;" src="logo2.png" alt=""></i></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                    </li>
+                </ul>
+                <div>
+                    <button type="button" class="btn btn-sm btn-warning" data-toggle="popover" title="Popover title" data-content="You just pressed here" >Press here</button>
+                </div>
+                <div class="progress bg-light" style="width: 25%;">
+                    <div class="progress-bar bg-warning text-dark" role="progressbar" style="width:25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                </div>
+                <form class="d-flex">
+                    <input class="form-control ms-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-warning" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
     <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 mt-5">
+                <nav id="my_nav">
+                    <ul class="nav nav-pills">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#one">One</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#two">Two</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#three">Three</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#four">Four</a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="holder" style="height:300px; overflow:auto;">
+                    <h4 id="one">
+                        One
+                    </h4>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magnam odit omnis doloribus repudiandae, libero, dicta quidem exercitationem, iste fugit minus quod possimus perferendis blanditiis pariatur illo error autem laudantium nobis.</p>
+                    <h4 id="two">
+                        Two
+                    </h4>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magnam odit omnis doloribus repudiandae, libero, dicta quidem exercitationem, iste fugit minus quod possimus perferendis blanditiis pariatur illo error autem laudantium nobis.</p>
+                    <h4 id="three">
+                        Three
+                    </h4>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magnam odit omnis doloribus repudiandae, libero, dicta quidem exercitationem, iste fugit minus quod possimus perferendis blanditiis pariatur illo error autem laudantium nobis.</p>
+                    <h4 id="four">
+                        Four
+                    </h4>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magnam odit omnis doloribus repudiandae, libero, dicta quidem exercitationem, iste fugit minus quod possimus perferendis blanditiis pariatur illo error autem laudantium nobis.</p>
+                    
+                
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <!--
         <div class="row">
             <div class="col-sm p-3 mb-2 bg-primary text-white">1</div>
             <div class="col-sm p-3 mb-2 bg-primary text-white">2</div>
@@ -25,7 +114,7 @@
             <div class="col-sm p-3 mb-2 bg-primary text-white">6</div>
         </div>
     </div>
-    <!--<div class="container-fluid">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-sm">1</div>
             <div class="col-sm">2</div>
@@ -35,7 +124,7 @@
             <div class="col-sm">4</div>
             <div class="col-sm">5</div>
         </div>
-    </div>-->
+    </div>
     <div class="container">
         <div class="row">
             <div class="col-md-8">Main Content</div>
@@ -174,48 +263,276 @@
         </div>
     </div>
 
-<div class="container">
-<div class="card-group my-3">
-<div class="card bg-primary text-white mx-3">
-    <div class="card-header">Header 1</div>
-    <div class="card-body">
-        <p class="card-text">Card 1</p>
+    <div class="container">
+        <div class="card-group my-3">
+            <div class="card bg-primary text-white mx-3">
+                <div class="card-header">Header 1</div>
+                <div class="card-body">
+                    <p class="card-text">Card 1</p>
+                </div>
+                <div class="card-footer">Footer 1</div>
+            </div>
+            <div class="card bg-secondary text-white mx-3">
+                <div class="card-header">Header 2</div>
+                <div class="card-body">
+                    <p class="card-text">Card 2</p>
+                </div>
+                <div class="card-footer">Footer 2</div>
+            </div>
+            <div class="card bg-success text-white mx-3">
+                <div class="card-header">Header 3</div>
+                <div class="card-body">
+                    <p class="card-text">Card 3</p>
+                </div>
+                <div class="card-footer bg-transparent border-warning">Footer 3</div>
+            </div>
+        </div>
     </div>
-    <div class="card-footer">Footer 1</div>
-</div>
-<div class="card bg-secondary text-white mx-3">
-    <div class="card-header">Header 2</div>
-    <div class="card-body">
-        <p class="card-text">Card 2</p>
+    <h2 class="display-2">Responsive Images</h2>
+    <div class="container">
+        <h2>Img fluid</h2>
+        <div style="width: 40%; border: 2px solid greenyellow;">
+            <img class="img-fluid" src="./album1.jpeg">
+        </div>
+        <h2>Img floats</h2>
+        <img class="rounded float-end" src="./album1.jpeg">
+        <p class="lead">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestiae dolorum iste voluptatem error id et quia
+            amet. Voluptatibus totam quisquam repellendus vitae reiciendis sunt veritatis! Recusandae laudantium
+            inventore cum ea!</p>
+        <div style="width: 40%; border: 2px solid greenyellow;">
+            <img class="img-fluid" src="./album1.jpeg">
+        </div>
     </div>
-    <div class="card-footer">Footer 2</div>
-</div>
-<div class="card bg-success text-white mx-3">
-    <div class="card-header">Header 3</div>
-    <div class="card-body">
-        <p class="card-text">Card 3</p>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-6">
+                <div class="box"></div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <div class="box"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                <div class="box"></div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                <div class="box"></div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                <div class="box"></div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                <div class="box"></div>
+            </div>
+        </div>
+    -->
+        <!--Basic Login Form-->
+        <div class="container mt-5 py-5">
+            <div class="row justified-content-center">
+                <div class="col-lg-4">
+                    <div class="border border-info mt-3 my_form rounded ">
+                        <form>
+                            <h5 class="display-4" style="font-size: 2.5rem;">Login into admin dash</h5>
+                            <div class="mb-3">
+                                <label class="form-label">Username</label>
+                                <input type="text" name="username" class="form-control form-control-sm"
+                                    placeholder="Enter your username">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Password</label>
+                                <input type="password" name="password" class="form-control"
+                                    placeholder="Enter your password">
+                            </div>
+                            <div class="mb-3">
+                                <input type="submit" value="Login" name="Login" class="btn btn-primary">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container mt-5 py-5">
+            <div class="row justified-content-center">
+                <div class="col-lg-6">
+                    <form class="form form-control">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 mb-3">
+                                <label class="form-label">First Name</label>
+                                <input class="form-control form-control-sm" type="text"
+                                    placeholder="Enter your first name"></input>
+                            </div>
+                            <div class="col-lg-6 col-md-6 mb-3">
+                                <label class="form-label">Last Name</label>
+                                <input class="form-control form-control-sm" type="text"
+                                    placeholder="Enter your last name"></input>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <button type="submit" class="btn btn-block btn-primary disabled">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 my-5">
+                        <div class="card">
+                            <div class="card-header">Hello Man</div>
+                            <div class="card-body">
+                                <div class="card-text">Hey</div>
+                            </div>
+                            <div class="card-footer">
+                                Hiii
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 my-5">
+                        <div class="card">
+                            <div class="card-header">Hello man2</div>
+                            <div class="card-body">
+                                <div class="card-text">Hey</div>
+                            </div>
+                            <div class="card-footer">
+                                Hiii
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6 mt-5">
+                        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-indicators">
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                                    class="active" aria-current="true" aria-label="Slide 1"></button>
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                                    aria-label="Slide 2"></button>
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                                    aria-label="Slide 3"></button>
+                            </div>
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="https://source.unsplash.com/random/420x240" class="d-block w-100"
+                                        alt="...">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="https://source.unsplash.com/random/420x240" class="d-block w-100"
+                                        alt="...">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="https://source.unsplash.com/random/420x240" class="d-block w-100"
+                                        alt="...">
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button"
+                                data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button"
+                                data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container mt-5">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <p>
+                            <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button"
+                                aria-expanded="false" aria-controls="collapseExample">
+                                Link with href
+                            </a>
+                            <button class="btn btn-primary" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                Button with data-bs-target
+                            </button>
+                        </p>
+                        <div class="collapse" id="collapseExample">
+                            <div class="card card-body">
+                                Some placeholder content for the collapse component. This panel is hidden by default but
+                                revealed when the user activates the relevant trigger.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="owl-carousel owl-theme">
+                            <div class="item">
+                                <h4>1</h4>
+                            </div>
+                            <div class="item">
+                                <h4>2</h4>
+                            </div>
+                            <div class="item">
+                                <h4>3</h4>
+                            </div>
+                            <div class="item">
+                                <h4>4</h4>
+                            </div>
+                            <div class="item">
+                                <h4>5</h4>
+                            </div>
+                            <div class="item">
+                                <h4>6</h4>
+                            </div>
+                            <div class="item">
+                                <h4>7</h4>
+                            </div>
+                            <div class="item">
+                                <h4>8</h4>
+                            </div>
+                            <div class="item">
+                                <h4>9</h4>
+                            </div>
+                            <div class="item">
+                                <h4>10</h4>
+                            </div>
+                            <div class="item">
+                                <h4>11</h4>
+                            </div>
+                            <div class="item">
+                                <h4>12</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="card-footer bg-transparent border-warning">Footer 3</div>
-</div>
-</div>
-</div>
-<h2>Responsive Images</h2>
-<div class="container">
-<h2>Img fluid</h2>
-<div style="width: 40%; border: 2px solid greenyellow;">
-    <img class="img-fluid" src="./album1.jpeg">
-</div>
-<h2>Img floats</h2>
-    <img class="rounded float-end" src="./album1.jpeg">
-    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestiae dolorum iste voluptatem error id et quia amet. Voluptatibus totam quisquam repellendus vitae reiciendis sunt veritatis! Recusandae laudantium inventore cum ea!</p>
-
-
-    <div style="width: 40%; border: 2px solid greenyellow;">
-    <img class="img-fluid" src="./album1.jpeg">
-</div>
-</div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="js/bootstrap.js"></script>
+    <script src="owl.carousel.min.js"></script>
+    <script>
+        $('.owl-carousel').owlCarousel({
+            loop: true,
+            margin: 10,
+            nav: true,
+            navText: ["<<", ">>"],
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 3
+                },
+                1000: {
+                    items: 5
+                }
+            }
+        })
+    </script>
 </body>
 
 </html>

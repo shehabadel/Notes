@@ -19,7 +19,7 @@ New in Bootstrap 5
 -> New components
 -> Enhanced Icons (SVG Icon Library)
 
-
+->Either use CDN (Content Delivery Network) or download bootstrap locally.
 --It is better to check documentation--
 
 --Bootstrap Grid System--
@@ -35,6 +35,10 @@ It mainly uses 12 columns
 
 In order to create a layout we use
 -Container
+    -> There are several container types related to 
+    their sizes, like .container, .container-sm, .container-md
+    .container-fluid,..etc
+    -> better check documentation for sizes in pixels
 -Row
 -Columns
 
@@ -42,7 +46,7 @@ Grid: Breakpoints
 
 Breakpoint              Class infix         Dimensions
 
-X-Small                 xs                  0-576px
+X-Small                 xs or -None         0-576px
 Small                   sm                  >=576px
 Medium                  md                  >=768px
 Large                   lg                  >=992px
@@ -58,6 +62,16 @@ in our grid system
 col-xs-12: if we are on screensize xs, the col shoud have a width of 12 from the the 12 columns
 in our grid system ( takes all the width of the page )
 
+--Align Columns inside Grid--
+In order to align vertically
+class="align-items-start" -> at the start of the row
+class="align-items-center" -> at the center
+class="align-items-end"
+
+Inorder to align horizontally
+class="justify-content-start" -> at the start of the row
+class="justify-content-center" -> at the center of the row
+class="justify-content-end" -> at the end of the row
 
 --Classes--
 -Container-
@@ -213,17 +227,118 @@ Where size is one of:
 auto - for classes that set the margin to auto
 
 
+--Images--
+class:"img-fluid" -> the image is responsive
+class:"img-thumbnail" -> the image looks like thumbnail
+class:"img-rounded" -> rounded borders
+class:"
+
+--Table--
+-some colors-
+table-primary
+table-secondary
+table-sucess
+..etc
+
+table-stripedd -> kol row byb2a loon
+table-bordered border-primary
+table-hover -> lama bt-hover el loon byt3'yr
+table-success table-striped
+
+--BreadCrumb--
+3amel zy fehrees kda gowa el bybyen enta fe anhy page maslan
+
+    <div class="breadcrumb">
+        <div class="breadcrumb-item">
+
 --Alerts and Toasts--
 
 --Carousal Sliders--
 
---Scrollspy--
-bt3rf enta feen technically
+--Modal--
+more like a floating dialog to enter data mainly
+
 
 --Navbars, navs, and tabs--
 
 --Offcanavas--
 The side menu
 
---Icons--
+--Popover--
+When pressed on a button, a popover message appears
+    <div>
+        <button type="button" class="btn btn-sm btn-warning" data-toggle="popover" title="Popover title" data-content="You just pressed here" >Press here</button>
+    </div>
+
+--Progress Bar--
+check its aria attributes from the documentation
+<div class="progress mb-3">
+    <div class="progress-bar" role="progressbar" style="width:25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+</div>
+
+--Scrollspy--
+
+->nav-link: leaves spacing between items
+<div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 mt-5">
+                <nav id="my_nav">
+                    <ul class="nav nav-pills">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#one">One</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#two">Two</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#three">Three</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#four">Four</a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="holder" style="height:300px; overflow:auto;">
+                    <h4 id="one">
+                        One
+                    </h4>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magnam odit omnis doloribus repudiandae, libero, dicta quidem exercitationem, iste fugit minus quod possimus perferendis blanditiis pariatur illo error autem laudantium nobis.</p>
+                    <h4 id="two">
+                        Two
+                    </h4>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magnam odit omnis doloribus repudiandae, libero, dicta quidem exercitationem, iste fugit minus quod possimus perferendis blanditiis pariatur illo error autem laudantium nobis.</p>
+                    <h4 id="three">
+                        Three
+                    </h4>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magnam odit omnis doloribus repudiandae, libero, dicta quidem exercitationem, iste fugit minus quod possimus perferendis blanditiis pariatur illo error autem laudantium nobis.</p>
+                    <h4 id="four">
+                        Four
+                    </h4>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magnam odit omnis doloribus repudiandae, libero, dicta quidem exercitationem, iste fugit minus quod possimus perferendis blanditiis pariatur illo error autem laudantium nobis.</p>
+                    
+                
+                </div>
+            </div>
+        </div>
+    </div>
+
+    --Icons--
+
+--Forms--
+
+--Text Truncation--
 */
+
+.box{
+    background-color:blueviolet;
+    min-height: 10px;
+    margin-top: 5px;
+}
+.my_form{
+    padding:15px;
+    box-shadow: 2px 2px 20px rgba(0,0,0,0.3);
+}
+
+.custom-nav{
+    background-color: black;
+}
