@@ -1,0 +1,149 @@
+html{
+    font-family: 'Roboto', sans-serif !important;
+}
+:root{
+--secondaryColor: #262626;
+}
+body{
+    background-color: #1A1A1A !important;
+    color: #F2F2F2 !important;
+    overflow-x: hidden;
+}
+
+a{
+    white-space: nowrap;
+}
+.secondaryBackground{
+    background-color: var(--secondaryColor) !important;
+}
+
+/*Start Navigation Bar*/
+.navBrandFont{
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif !important;
+    font-weight: 900;
+}
+
+
+#searchForm{
+    border:2px solid #303030;
+    border-radius: 1.25rem !important;
+    -webkit-border-radius: 1.25rem !important;
+    -moz-border-radius: 1.25rem !important;
+    -ms-border-radius: 1.25rem !important;
+    -o-border-radius: 1.25rem !important;
+}
+.bellContainer{
+    position: relative;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.bellContainer::after{
+    position: absolute;
+    content:"";
+    display: block;
+    width:6px;
+    height:6px;
+    top: 4px;
+    right: 0;
+    background-color: #1875F0;
+    border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
+}
+
+.avatarContainer{
+    border: 2px solid var(--secondaryColor);
+    display: inline-block;
+}
+
+.avatarContainer img{
+    display: block;
+    border-radius: 50% !important;
+    -webkit-border-radius: 50% !important;
+    -moz-border-radius: 50% !important;
+    -ms-border-radius: 50% !important;
+    -o-border-radius: 50% !important;
+}
+.usernameContainer{
+    display: inline-block;
+}
+.usernameFont{
+    font-family: 'Roboto', sans-serif !important;
+    font-weight: 500;
+}
+
+@media (max-width:768px) {
+    .avatarContainer{
+        display: none;
+    }
+    .usernameContainer{
+        display: none;
+    }
+}
+/*End Navigation Bar*/
+/*Start Landing Page*/
+
+/*Start Side Bar*/
+
+.sidebar-col{
+    max-width: fit-content;
+}
+.sidebar{
+    height:100vh;
+    display: block;
+    background-color: var(--secondaryColor) !important;
+}
+.navside-item-active{
+    border-left: 2px solid #0d6efd !important;
+    border-radius:0 !important;
+    -webkit-border-radius:0 !important;
+    -moz-border-radius:0 !important;
+    -ms-border-radius:0 !important;
+    -o-border-radius:0 !important;
+}
+.sidebar-item:hover{
+background-color: #444444;
+}
+@media (max-width:768px){
+    .sidebar-responsive{
+        display: none;
+    }
+}
+
+/*End Side Bar*/
+
+/*Start Cards Page*/
+
+.card-header-font{
+    font-family: 'Roboto', sans-serif !important;
+    font-weight: 600;
+}
+.card-header-button{
+    background-color: transparent !important;
+    border: 2px solid #303030 !important;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    font-size: 12px !important;
+    font-family: 'Roboto', sans-serif;
+}
+.item-border{
+    border: 2px solid #303030 !important;
+}
+.item-text{
+    color: #F2F2F2;
+    font-size: 13px;
+    font-family: 'Roboto', sans-serif;
+    font-weight:500;
+}
+.item-profile-text{
+    color: #808080;
+    font-size: 11px;
+    font-family: 'Roboto', sans-serif;
+    font-weight:500;
+}
