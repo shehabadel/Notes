@@ -5,3 +5,4 @@ Notes on syntax of programming languages and some concepts.
 2) CSS
 3) html
 4) JavaScript
+5) jQuery
