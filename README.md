@@ -9,5 +9,7 @@ Notes on syntax of programming languages and some concepts.
 
 Projects done so far
 1) Todo List (jQuery, Bootstrap, CSS, HTML)
+
     -> check jQuery.html, jQuery.js, and jQuery.CSS
+    
     -> full credits goes to the owner of the design
