@@ -62,6 +62,12 @@ in our grid system
 col-xs-12: if we are on screensize xs, the col shoud have a width of 12 from the the 12 columns
 in our grid system ( takes all the width of the page )
 
+
+col-lg-> low 3andy 2 elements gowa el row 3andhom col-lg bas men 3'er size hy7sbha bel flex box 3ala ad 
+el elements ely mwogoda 
+low el screen w2tha el size bet3ha kan sm 2ow md maslan hytl3 shakl tany 3'er ely elmfrod yb2a fe col-lg
+
+
 --Align Columns inside Grid--
 In order to align vertically
 class="align-items-start" -> at the start of the row
