@@ -950,6 +950,7 @@ var _searchParamsJs = require("./SearchParams.js"); //Plugins to install
 var _searchParamsJsDefault = parcelHelpers.interopDefault(_searchParamsJs);
 //Eslint, Babel, Prettier, React
 //npm install -D eslint-plugin-import eslint-plugin-jsx-a11y eslint-lugin-react
+//npm install -D eslint-plugin-react-hooks
 //Creating a react component which is the most basic building block in React
 //Which we are going to render using ReactDOM
 //JSX -> Check Pet.js
@@ -22976,8 +22977,24 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
+var _pet = require("./Pet");
+var _petDefault = parcelHelpers.interopDefault(_pet);
 var _jsxRuntime = require("react/jsx-runtime");
 var _s = $RefreshSig$();
+const ANIMALS = [
+    "dog",
+    "cat",
+    "bat",
+    "fish",
+    "animalia"
+];
+const BREEDS = [
+    "Pug",
+    "arnold",
+    "dave",
+    "shawky",
+    "bondo2"
+];
 const SearchParams = ()=>{
     _s();
     //location inside input is not stored anywhere, so
@@ -22996,33 +23013,103 @@ const SearchParams = ()=>{
     // now we can remove this line below
     // const location = "Seattle, WA";
     //setLocation will always keep track of location
-    const [location, setLocation] = _react.useState("Seattle, WA"); //now moving to the JSX part we should
+    /**
+   * Hooks use Tuples structure
+   * const locationTuple = useState("Seattle, WA");
+   * const locattion= locationTuple[0];
+   * const setLocation= locationTuple[1]
+   */ /**
+   *
+   * ----------useEffects Hooks----------
+   *
+   */ const [location, setLocation] = _react.useState("Seattle, WA");
+    const [animal, setAnimal] = _react.useState("xddd");
+    const [breed, setBreed] = _react.useState("Pug"); //this gonna have an array of all pets coming back from the api
+    const [pets, setPet] = _react.useState([]); //now using useEffect hook and add all async code
+    _react.useEffect(()=>{
+        requestPets();
+    });
+    async function requestPets() {
+        //they match our useState hooks variables, where they take the value inside them and make a get request
+        var headers = {
+        };
+        const response = await fetch(`http://pets-v2.dev.apis.com/pets?animal=${animal}&location=${location}&breed=${breed}`);
+        const jsonResponse = await response.json();
+    } //now moving to the JSX part we should
     //add onChange event handler
     return(/*#__PURE__*/ //We use className instead of class as class is a reserved word
     _jsxRuntime.jsx("div", {
         className: "search-params",
-        children: /*#__PURE__*/ _jsxRuntime.jsx("form", {
-            children: /*#__PURE__*/ _jsxRuntime.jsxs("label", {
-                htmlFor: "location",
-                children: [
-                    "Location",
-                    /*#__PURE__*/ _jsxRuntime.jsx("input", {
-                        id: "location" //one-line arrow function
-                        ,
-                        onChange: (e)=>setLocation(e.target.value)
-                        ,
-                        value: location,
-                        placeholder: "Location"
-                    }),
-                    /*#__PURE__*/ _jsxRuntime.jsx("button", {
-                        children: " Submit"
-                    })
-                ]
-            })
+        children: /*#__PURE__*/ _jsxRuntime.jsxs("form", {
+            children: [
+                /*#__PURE__*/ _jsxRuntime.jsxs("label", {
+                    htmlFor: "location",
+                    children: [
+                        "Location",
+                        /*#__PURE__*/ _jsxRuntime.jsx("input", {
+                            id: "location" //one-line arrow function
+                            ,
+                            onChange: (e)=>setLocation(e.target.value)
+                            ,
+                            value: location,
+                            placeholder: "Location"
+                        }),
+                        /*#__PURE__*/ _jsxRuntime.jsx("button", {
+                            children: " Submit"
+                        })
+                    ]
+                }),
+                /*#__PURE__*/ _jsxRuntime.jsxs("label", {
+                    htmlFor: "animal",
+                    children: [
+                        "Animal",
+                        /*#__PURE__*/ _jsxRuntime.jsxs("select", {
+                            id: "animal",
+                            value: animal,
+                            onChange: (e)=>setAnimal(e.target.value)
+                            ,
+                            onBlur: (e)=>setAnimal(e.target.value)
+                            ,
+                            children: [
+                                /*#__PURE__*/ _jsxRuntime.jsx("option", {
+                                }),
+                                ANIMALS.map((animal1)=>/*#__PURE__*/ _jsxRuntime.jsx("option", {
+                                        value: animal1,
+                                        children: animal1
+                                    }, animal1)
+                                )
+                            ]
+                        })
+                    ]
+                }),
+                /*#__PURE__*/ _jsxRuntime.jsxs("label", {
+                    htmlFor: "breed",
+                    children: [
+                        "Breed",
+                        /*#__PURE__*/ _jsxRuntime.jsxs("select", {
+                            id: "breed",
+                            onChange: (e)=>setBreed(e.target.value)
+                            ,
+                            onBlur: (e)=>setBreed(e.target.value)
+                            ,
+                            value: breed,
+                            children: [
+                                /*#__PURE__*/ _jsxRuntime.jsx("option", {
+                                }),
+                                BREEDS.map((breed1)=>/*#__PURE__*/ _jsxRuntime.jsx("option", {
+                                        value: breed1,
+                                        children: breed1
+                                    }, breed1)
+                                )
+                            ]
+                        })
+                    ]
+                })
+            ]
         })
     }));
 };
-_s(SearchParams, "6MaXGJvouBaI0MJX5jHGuYcL4xY=");
+_s(SearchParams, "1udozZbpFTdNwqFNg1eyvSz4meI=");
 _c = SearchParams;
 exports.default = SearchParams;
 var _c;
@@ -23033,6 +23120,6 @@ $RefreshReg$(_c, "SearchParams");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"6TuXu","react/jsx-runtime":"8xIwr","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5V79J"}]},["2rAXy","5MabY","g1M29"], "g1M29", "parcelRequireaddb")
+},{"react":"6TuXu","react/jsx-runtime":"8xIwr","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5V79J","./Pet":"fdkC0"}]},["2rAXy","5MabY","g1M29"], "g1M29", "parcelRequireaddb")
 
 //# sourceMappingURL=index.10fa75bc.js.map

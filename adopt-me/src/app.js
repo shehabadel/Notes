@@ -6,6 +6,7 @@ import SearchParams from "./SearchParams.js";
 //Plugins to install
 //Eslint, Babel, Prettier, React
 //npm install -D eslint-plugin-import eslint-plugin-jsx-a11y eslint-lugin-react
+//npm install -D eslint-plugin-react-hooks
 
 //Creating a react component which is the most basic building block in React
 //Which we are going to render using ReactDOM
