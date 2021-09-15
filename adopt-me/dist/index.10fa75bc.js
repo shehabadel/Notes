@@ -968,16 +968,6 @@ const App = ()=>{
                 animal: "Dog",
                 breed: "Cocktaiel"
             }),
-            /*#__PURE__*/ _jsxRuntime.jsx(_petJsDefault.default, {
-                name: "Pepper",
-                animal: "Bird",
-                breed: "Havanese"
-            }),
-            /*#__PURE__*/ _jsxRuntime.jsx(_petJsDefault.default, {
-                name: "Sudo",
-                animal: "Cat",
-                breed: "Terrier"
-            }),
             /*#__PURE__*/ _jsxRuntime.jsx(_searchParamsJsDefault.default, {
             })
         ]
@@ -1010,7 +1000,7 @@ $RefreshReg$(_c, "App");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"6TuXu","react-dom":"gkWJK","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5V79J","./Pet.js":"fdkC0","react/jsx-runtime":"8xIwr","./SearchParams.js":"2WLVn"}],"6TuXu":[function(require,module,exports) {
+},{"react":"6TuXu","react-dom":"gkWJK","./Pet.js":"fdkC0","./SearchParams.js":"2WLVn","react/jsx-runtime":"8xIwr","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5V79J"}],"6TuXu":[function(require,module,exports) {
 'use strict';
 module.exports = require('./cjs/react.development.js');
 
@@ -21961,159 +21951,7 @@ module.exports = require('./cjs/scheduler-tracing.development.js');
     exports.unstable_wrap = unstable_wrap;
 })();
 
-},{}],"JacNc":[function(require,module,exports) {
-exports.interopDefault = function(a) {
-    return a && a.__esModule ? a : {
-        default: a
-    };
-};
-exports.defineInteropFlag = function(a) {
-    Object.defineProperty(a, '__esModule', {
-        value: true
-    });
-};
-exports.exportAll = function(source, dest) {
-    Object.keys(source).forEach(function(key) {
-        if (key === 'default' || key === '__esModule') return;
-        // Skip duplicate re-exports when they have the same value.
-        if (key in dest && dest[key] === source[key]) return;
-        Object.defineProperty(dest, key, {
-            enumerable: true,
-            get: function() {
-                return source[key];
-            }
-        });
-    });
-    return dest;
-};
-exports.export = function(dest, destName, get) {
-    Object.defineProperty(dest, destName, {
-        enumerable: true,
-        get: get
-    });
-};
-
-},{}],"5V79J":[function(require,module,exports) {
-"use strict";
-var Refresh = require('react-refresh/runtime');
-function debounce(func, delay) {
-    var args;
-    var timeout = undefined;
-    return function(args1) {
-        clearTimeout(timeout);
-        timeout = setTimeout(function() {
-            timeout = undefined;
-            func.call(null, args1);
-        }, delay);
-    };
-}
-var enqueueUpdate = debounce(function() {
-    Refresh.performReactRefresh();
-}, 30); // Everthing below is either adapted or copied from
-// https://github.com/facebook/metro/blob/61de16bd1edd7e738dd0311c89555a644023ab2d/packages/metro/src/lib/polyfills/require.js
-// MIT License - Copyright (c) Facebook, Inc. and its affiliates.
-module.exports.prelude = function(module) {
-    window.$RefreshReg$ = function(type, id) {
-        Refresh.register(type, module.id + ' ' + id);
-    };
-    window.$RefreshSig$ = Refresh.createSignatureFunctionForTransform;
-};
-module.exports.postlude = function(module) {
-    if (isReactRefreshBoundary(module.exports)) {
-        registerExportsForReactRefresh(module);
-        if (module.hot) {
-            module.hot.dispose(function(data) {
-                if (Refresh.hasUnrecoverableErrors()) window.location.reload();
-                data.prevExports = module.exports;
-            });
-            module.hot.accept(function(getParents) {
-                var prevExports = module.hot.data.prevExports;
-                var nextExports = module.exports; // Since we just executed the code for it, it's possible
-                // that the new exports make it ineligible for being a boundary.
-                var isNoLongerABoundary = !isReactRefreshBoundary(nextExports); // It can also become ineligible if its exports are incompatible
-                // with the previous exports.
-                // For example, if you add/remove/change exports, we'll want
-                // to re-execute the importing modules, and force those components
-                // to re-render. Similarly, if you convert a class component
-                // to a function, we want to invalidate the boundary.
-                var didInvalidate = shouldInvalidateReactRefreshBoundary(prevExports, nextExports);
-                if (isNoLongerABoundary || didInvalidate) {
-                    // We'll be conservative. The only case in which we won't do a full
-                    // reload is if all parent modules are also refresh boundaries.
-                    // In that case we'll add them to the current queue.
-                    var parents = getParents();
-                    if (parents.length === 0) {
-                        // Looks like we bubbled to the root. Can't recover from that.
-                        window.location.reload();
-                        return;
-                    }
-                    return parents;
-                }
-                enqueueUpdate();
-            });
-        }
-    }
-};
-function isReactRefreshBoundary(exports) {
-    if (Refresh.isLikelyComponentType(exports)) return true;
-    if (exports == null || typeof exports !== 'object') // Exit if we can't iterate over exports.
-    return false;
-    var hasExports = false;
-    var areAllExportsComponents = true;
-    let isESM = '__esModule' in exports;
-    for(var key in exports){
-        hasExports = true;
-        if (key === '__esModule') continue;
-        var desc = Object.getOwnPropertyDescriptor(exports, key);
-        if (desc && desc.get && !isESM) // Don't invoke getters for CJS as they may have side effects.
-        return false;
-        var exportValue = exports[key];
-        if (!Refresh.isLikelyComponentType(exportValue)) areAllExportsComponents = false;
-    }
-    return hasExports && areAllExportsComponents;
-}
-function shouldInvalidateReactRefreshBoundary(prevExports, nextExports) {
-    var prevSignature = getRefreshBoundarySignature(prevExports);
-    var nextSignature = getRefreshBoundarySignature(nextExports);
-    if (prevSignature.length !== nextSignature.length) return true;
-    for(var i = 0; i < nextSignature.length; i++){
-        if (prevSignature[i] !== nextSignature[i]) return true;
-    }
-    return false;
-} // When this signature changes, it's unsafe to stop at this refresh boundary.
-function getRefreshBoundarySignature(exports) {
-    var signature = [];
-    signature.push(Refresh.getFamilyByType(exports));
-    if (exports == null || typeof exports !== 'object') // Exit if we can't iterate over exports.
-    // (This is important for legacy environments.)
-    return signature;
-    let isESM = '__esModule' in exports;
-    for(var key in exports){
-        if (key === '__esModule') continue;
-        var desc = Object.getOwnPropertyDescriptor(exports, key);
-        if (desc && desc.get && !isESM) continue;
-        var exportValue = exports[key];
-        signature.push(key);
-        signature.push(Refresh.getFamilyByType(exportValue));
-    }
-    return signature;
-}
-function registerExportsForReactRefresh(module) {
-    var exports = module.exports, id = module.id;
-    Refresh.register(exports, id + ' %exports%');
-    if (exports == null || typeof exports !== 'object') // Exit if we can't iterate over exports.
-    // (This is important for legacy environments.)
-    return;
-    let isESM = '__esModule' in exports;
-    for(var key in exports){
-        var desc = Object.getOwnPropertyDescriptor(exports, key);
-        if (desc && desc.get && !isESM) continue;
-        var exportValue = exports[key];
-        Refresh.register(exportValue, id + ' %exports% ' + key);
-    }
-}
-
-},{"react-refresh/runtime":"fNmB3"}],"fdkC0":[function(require,module,exports) {
+},{}],"fdkC0":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$61ca = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -22159,7 +21997,7 @@ $RefreshReg$(_c, "Pet");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"6TuXu","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5V79J","react/jsx-runtime":"8xIwr"}],"8xIwr":[function(require,module,exports) {
+},{"react":"6TuXu","react/jsx-runtime":"8xIwr","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5V79J"}],"8xIwr":[function(require,module,exports) {
 'use strict';
 module.exports = require('./cjs/react-jsx-runtime.development.js');
 
@@ -22966,7 +22804,159 @@ module.exports = require('./cjs/react-jsx-runtime.development.js');
     exports.jsxs = jsxs;
 })();
 
-},{"react":"6TuXu","object-assign":"jzTFF"}],"2WLVn":[function(require,module,exports) {
+},{"react":"6TuXu","object-assign":"jzTFF"}],"JacNc":[function(require,module,exports) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, '__esModule', {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === 'default' || key === '__esModule') return;
+        // Skip duplicate re-exports when they have the same value.
+        if (key in dest && dest[key] === source[key]) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
+
+},{}],"5V79J":[function(require,module,exports) {
+"use strict";
+var Refresh = require('react-refresh/runtime');
+function debounce(func, delay) {
+    var args;
+    var timeout = undefined;
+    return function(args1) {
+        clearTimeout(timeout);
+        timeout = setTimeout(function() {
+            timeout = undefined;
+            func.call(null, args1);
+        }, delay);
+    };
+}
+var enqueueUpdate = debounce(function() {
+    Refresh.performReactRefresh();
+}, 30); // Everthing below is either adapted or copied from
+// https://github.com/facebook/metro/blob/61de16bd1edd7e738dd0311c89555a644023ab2d/packages/metro/src/lib/polyfills/require.js
+// MIT License - Copyright (c) Facebook, Inc. and its affiliates.
+module.exports.prelude = function(module) {
+    window.$RefreshReg$ = function(type, id) {
+        Refresh.register(type, module.id + ' ' + id);
+    };
+    window.$RefreshSig$ = Refresh.createSignatureFunctionForTransform;
+};
+module.exports.postlude = function(module) {
+    if (isReactRefreshBoundary(module.exports)) {
+        registerExportsForReactRefresh(module);
+        if (module.hot) {
+            module.hot.dispose(function(data) {
+                if (Refresh.hasUnrecoverableErrors()) window.location.reload();
+                data.prevExports = module.exports;
+            });
+            module.hot.accept(function(getParents) {
+                var prevExports = module.hot.data.prevExports;
+                var nextExports = module.exports; // Since we just executed the code for it, it's possible
+                // that the new exports make it ineligible for being a boundary.
+                var isNoLongerABoundary = !isReactRefreshBoundary(nextExports); // It can also become ineligible if its exports are incompatible
+                // with the previous exports.
+                // For example, if you add/remove/change exports, we'll want
+                // to re-execute the importing modules, and force those components
+                // to re-render. Similarly, if you convert a class component
+                // to a function, we want to invalidate the boundary.
+                var didInvalidate = shouldInvalidateReactRefreshBoundary(prevExports, nextExports);
+                if (isNoLongerABoundary || didInvalidate) {
+                    // We'll be conservative. The only case in which we won't do a full
+                    // reload is if all parent modules are also refresh boundaries.
+                    // In that case we'll add them to the current queue.
+                    var parents = getParents();
+                    if (parents.length === 0) {
+                        // Looks like we bubbled to the root. Can't recover from that.
+                        window.location.reload();
+                        return;
+                    }
+                    return parents;
+                }
+                enqueueUpdate();
+            });
+        }
+    }
+};
+function isReactRefreshBoundary(exports) {
+    if (Refresh.isLikelyComponentType(exports)) return true;
+    if (exports == null || typeof exports !== 'object') // Exit if we can't iterate over exports.
+    return false;
+    var hasExports = false;
+    var areAllExportsComponents = true;
+    let isESM = '__esModule' in exports;
+    for(var key in exports){
+        hasExports = true;
+        if (key === '__esModule') continue;
+        var desc = Object.getOwnPropertyDescriptor(exports, key);
+        if (desc && desc.get && !isESM) // Don't invoke getters for CJS as they may have side effects.
+        return false;
+        var exportValue = exports[key];
+        if (!Refresh.isLikelyComponentType(exportValue)) areAllExportsComponents = false;
+    }
+    return hasExports && areAllExportsComponents;
+}
+function shouldInvalidateReactRefreshBoundary(prevExports, nextExports) {
+    var prevSignature = getRefreshBoundarySignature(prevExports);
+    var nextSignature = getRefreshBoundarySignature(nextExports);
+    if (prevSignature.length !== nextSignature.length) return true;
+    for(var i = 0; i < nextSignature.length; i++){
+        if (prevSignature[i] !== nextSignature[i]) return true;
+    }
+    return false;
+} // When this signature changes, it's unsafe to stop at this refresh boundary.
+function getRefreshBoundarySignature(exports) {
+    var signature = [];
+    signature.push(Refresh.getFamilyByType(exports));
+    if (exports == null || typeof exports !== 'object') // Exit if we can't iterate over exports.
+    // (This is important for legacy environments.)
+    return signature;
+    let isESM = '__esModule' in exports;
+    for(var key in exports){
+        if (key === '__esModule') continue;
+        var desc = Object.getOwnPropertyDescriptor(exports, key);
+        if (desc && desc.get && !isESM) continue;
+        var exportValue = exports[key];
+        signature.push(key);
+        signature.push(Refresh.getFamilyByType(exportValue));
+    }
+    return signature;
+}
+function registerExportsForReactRefresh(module) {
+    var exports = module.exports, id = module.id;
+    Refresh.register(exports, id + ' %exports%');
+    if (exports == null || typeof exports !== 'object') // Exit if we can't iterate over exports.
+    // (This is important for legacy environments.)
+    return;
+    let isESM = '__esModule' in exports;
+    for(var key in exports){
+        var desc = Object.getOwnPropertyDescriptor(exports, key);
+        if (desc && desc.get && !isESM) continue;
+        var exportValue = exports[key];
+        Refresh.register(exportValue, id + ' %exports% ' + key);
+    }
+}
+
+},{"react-refresh/runtime":"fNmB3"}],"2WLVn":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$56ea = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -22979,6 +22969,8 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _pet = require("./Pet");
 var _petDefault = parcelHelpers.interopDefault(_pet);
+var _useBreedList = require("./useBreedList");
+var _useBreedListDefault = parcelHelpers.interopDefault(_useBreedList);
 var _jsxRuntime = require("react/jsx-runtime");
 var _s = $RefreshSig$();
 const ANIMALS = [
@@ -23021,95 +23013,114 @@ const SearchParams = ()=>{
    */ /**
    *
    * ----------useEffects Hooks----------
-   *
+   *useEffect allows you to say "do a render of this component first so the user can see something then as soon as the render is done,
+    then do something (the something here being an effect.) In our case, we want the user to see our UI first then
+    we want to make a request to the API so we can that initial list of pets.
    */ const [location, setLocation] = _react.useState("Seattle, WA");
-    const [animal, setAnimal] = _react.useState("xddd");
-    const [breed, setBreed] = _react.useState("Pug"); //this gonna have an array of all pets coming back from the api
+    const [animal, setAnimal] = _react.useState("");
+    const [breed, setBreed] = _react.useState("");
+    const [breedList] = _useBreedListDefault.default(animal); //this gonna have an array of all pets coming back from the api
     const [pets, setPet] = _react.useState([]); //now using useEffect hook and add all async code
     _react.useEffect(()=>{
-        requestPets();
-    });
+        requestPets(); //second parameter indicates how many times or how should I recall the effect
+    //for example if we put [animal], then it will rerender whenever animal changes
+    //empty array means it calls only once
+    }, []);
     async function requestPets() {
-        //they match our useState hooks variables, where they take the value inside them and make a get request
-        var headers = {
-        };
-        const response = await fetch(`http://pets-v2.dev.apis.com/pets?animal=${animal}&location=${location}&breed=${breed}`);
+        console.log("Here again"); //they match our useState hooks variables, where they take the value inside them and make a get request
+        const response = await fetch(`http://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breed=${breed}`);
         const jsonResponse = await response.json();
+        console.log(jsonResponse); //holding the jsonResponse inside pets variable
+        setPet(jsonResponse.pets);
     } //now moving to the JSX part we should
     //add onChange event handler
     return(/*#__PURE__*/ //We use className instead of class as class is a reserved word
-    _jsxRuntime.jsx("div", {
+    _jsxRuntime.jsxs("div", {
         className: "search-params",
-        children: /*#__PURE__*/ _jsxRuntime.jsxs("form", {
-            children: [
-                /*#__PURE__*/ _jsxRuntime.jsxs("label", {
-                    htmlFor: "location",
-                    children: [
-                        "Location",
-                        /*#__PURE__*/ _jsxRuntime.jsx("input", {
-                            id: "location" //one-line arrow function
-                            ,
-                            onChange: (e)=>setLocation(e.target.value)
-                            ,
-                            value: location,
-                            placeholder: "Location"
-                        }),
-                        /*#__PURE__*/ _jsxRuntime.jsx("button", {
-                            children: " Submit"
-                        })
-                    ]
-                }),
-                /*#__PURE__*/ _jsxRuntime.jsxs("label", {
-                    htmlFor: "animal",
-                    children: [
-                        "Animal",
-                        /*#__PURE__*/ _jsxRuntime.jsxs("select", {
-                            id: "animal",
-                            value: animal,
-                            onChange: (e)=>setAnimal(e.target.value)
-                            ,
-                            onBlur: (e)=>setAnimal(e.target.value)
-                            ,
-                            children: [
-                                /*#__PURE__*/ _jsxRuntime.jsx("option", {
-                                }),
-                                ANIMALS.map((animal1)=>/*#__PURE__*/ _jsxRuntime.jsx("option", {
-                                        value: animal1,
-                                        children: animal1
-                                    }, animal1)
-                                )
-                            ]
-                        })
-                    ]
-                }),
-                /*#__PURE__*/ _jsxRuntime.jsxs("label", {
-                    htmlFor: "breed",
-                    children: [
-                        "Breed",
-                        /*#__PURE__*/ _jsxRuntime.jsxs("select", {
-                            id: "breed",
-                            onChange: (e)=>setBreed(e.target.value)
-                            ,
-                            onBlur: (e)=>setBreed(e.target.value)
-                            ,
-                            value: breed,
-                            children: [
-                                /*#__PURE__*/ _jsxRuntime.jsx("option", {
-                                }),
-                                BREEDS.map((breed1)=>/*#__PURE__*/ _jsxRuntime.jsx("option", {
-                                        value: breed1,
-                                        children: breed1
-                                    }, breed1)
-                                )
-                            ]
-                        })
-                    ]
-                })
-            ]
-        })
+        children: [
+            /*#__PURE__*/ _jsxRuntime.jsxs("form", {
+                onSubmit: (e)=>{
+                    e.preventDefault();
+                    requestPets();
+                },
+                children: [
+                    /*#__PURE__*/ _jsxRuntime.jsxs("label", {
+                        htmlFor: "location",
+                        children: [
+                            "Location",
+                            /*#__PURE__*/ _jsxRuntime.jsx("input", {
+                                id: "location" //one-line arrow function
+                                ,
+                                onChange: (e)=>setLocation(e.target.value)
+                                ,
+                                value: location,
+                                placeholder: "Location"
+                            }),
+                            /*#__PURE__*/ _jsxRuntime.jsx("button", {
+                                children: " Submit"
+                            })
+                        ]
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsxs("label", {
+                        htmlFor: "animal",
+                        children: [
+                            "Animal",
+                            /*#__PURE__*/ _jsxRuntime.jsxs("select", {
+                                id: "animal",
+                                value: animal,
+                                onChange: (e)=>setAnimal(e.target.value)
+                                ,
+                                onBlur: (e)=>setAnimal(e.target.value)
+                                ,
+                                children: [
+                                    /*#__PURE__*/ _jsxRuntime.jsx("option", {
+                                    }),
+                                    ANIMALS.map((animal1)=>/*#__PURE__*/ _jsxRuntime.jsx("option", {
+                                            value: animal1,
+                                            children: animal1
+                                        }, animal1)
+                                    )
+                                ]
+                            })
+                        ]
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsxs("label", {
+                        htmlFor: "breed",
+                        children: [
+                            "Breed",
+                            /*#__PURE__*/ _jsxRuntime.jsxs("select", {
+                                id: "breed",
+                                onChange: (e)=>setBreed(e.target.value)
+                                ,
+                                onBlur: (e)=>setBreed(e.target.value)
+                                ,
+                                value: breed,
+                                children: [
+                                    /*#__PURE__*/ _jsxRuntime.jsx("option", {
+                                    }),
+                                    breedList.map((breed1)=>/*#__PURE__*/ _jsxRuntime.jsx("option", {
+                                            value: breed1,
+                                            children: breed1
+                                        }, breed1)
+                                    )
+                                ]
+                            })
+                        ]
+                    })
+                ]
+            }),
+            pets.map((pet)=>/*#__PURE__*/ _jsxRuntime.jsx(_petDefault.default, {
+                    name: pet.name,
+                    animal: pet.animal,
+                    breed: pet.breed
+                }, pet.id)
+            )
+        ]
     }));
 };
-_s(SearchParams, "1udozZbpFTdNwqFNg1eyvSz4meI=");
+_s(SearchParams, "P1BMH8kstYgjOWxTH52N4IUFwkY=", false, function() {
+    return [_useBreedListDefault.default];
+});
 _c = SearchParams;
 exports.default = SearchParams;
 var _c;
@@ -23120,6 +23131,52 @@ $RefreshReg$(_c, "SearchParams");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"6TuXu","react/jsx-runtime":"8xIwr","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5V79J","./Pet":"fdkC0"}]},["2rAXy","5MabY","g1M29"], "g1M29", "parcelRequireaddb")
+},{"react":"6TuXu","./Pet":"fdkC0","react/jsx-runtime":"8xIwr","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5V79J","./useBreedList":"2sKmO"}],"2sKmO":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$5f15 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$5f15.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _react = require("react");
+var _s = $RefreshSig$();
+const localCache = {
+};
+function useBreedList(animal) {
+    _s();
+    const [breedList, setBreedList] = _react.useState([]);
+    const [status, setStatus] = _react.useState("unloaded");
+    _react.useEffect(()=>{
+        if (!animal) setBreedList([]);
+        else if (localCache[animal]) setBreedList(localCache[animal]);
+        else requestBreedList();
+        async function requestBreedList() {
+            setBreedList([]);
+            setStatus("loading");
+            const res = await fetch(`http://pets-v2.dev-apis.com/breeds?animal=${animal}`);
+            const json = await res.json();
+            localCache[animal] = json.breeds || [];
+            setBreedList(localCache[animal]);
+            setStatus("loaded");
+        }
+    }, [
+        animal
+    ]);
+    return [
+        breedList,
+        status
+    ];
+}
+exports.default = useBreedList;
+_s(useBreedList, "fwO6kCJGACy4buvWsnD+NOmO304=");
+
+  $parcel$ReactRefreshHelpers$5f15.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react":"6TuXu","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5V79J"}]},["2rAXy","5MabY","g1M29"], "g1M29", "parcelRequireaddb")
 
 //# sourceMappingURL=index.10fa75bc.js.map

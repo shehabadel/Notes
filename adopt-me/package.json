@@ -8,6 +8,7 @@
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
     "lint": "eslint \"src/**/*.{js,jsx}\" --quiet"
   },
+  "browserslist": "last 2 Edge versions",
   "author": "",
   "license": "ISC",
   "devDependencies": {

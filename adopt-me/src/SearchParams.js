@@ -1,9 +1,10 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import Pet from "./Pet";
-
+import useBreedList from "./useBreedList";
 const ANIMALS = ["dog", "cat", "bat", "fish", "animalia"];
 const BREEDS = ["Pug", "arnold", "dave", "shawky", "bondo2"];
+
 const SearchParams = () => {
   //location inside input is not stored anywhere, so
   //we declare variable to hold its value
@@ -35,11 +36,14 @@ const SearchParams = () => {
   /**
    *
    * ----------useEffects Hooks----------
-   *
+   *useEffect allows you to say "do a render of this component first so the user can see something then as soon as the render is done,
+    then do something (the something here being an effect.) In our case, we want the user to see our UI first then
+    we want to make a request to the API so we can that initial list of pets.
    */
   const [location, setLocation] = useState("Seattle, WA");
-  const [animal, setAnimal] = useState("xddd");
-  const [breed, setBreed] = useState("Pug");
+  const [animal, setAnimal] = useState("");
+  const [breed, setBreed] = useState("");
+  const [breedList] = useBreedList(animal);
 
   //this gonna have an array of all pets coming back from the api
   const [pets, setPet] = useState([]);
@@ -47,22 +51,33 @@ const SearchParams = () => {
   //now using useEffect hook and add all async code
   useEffect(() => {
     requestPets();
-  });
+    //second parameter indicates how many times or how should I recall the effect
+    //for example if we put [animal], then it will rerender whenever animal changes
+    //empty array means it calls only once
+  }, []);
 
   async function requestPets() {
+    console.log("Here again");
     //they match our useState hooks variables, where they take the value inside them and make a get request
-    var headers = {};
     const response = await fetch(
-      `http://pets-v2.dev.apis.com/pets?animal=${animal}&location=${location}&breed=${breed}`
+      `http://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breed=${breed}`
     );
     const jsonResponse = await response.json();
+    console.log(jsonResponse);
+    //holding the jsonResponse inside pets variable
+    setPet(jsonResponse.pets);
   }
   //now moving to the JSX part we should
   //add onChange event handler
   return (
     //We use className instead of class as class is a reserved word
     <div className="search-params">
-      <form>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          requestPets();
+        }}
+      >
         <label htmlFor="location">
           Location
           <input
@@ -107,7 +122,7 @@ const SearchParams = () => {
             value={breed}
           >
             <option></option>
-            {BREEDS.map((breed) => (
+            {breedList.map((breed) => (
               <option value={breed} key={breed}>
                 {breed}
               </option>
@@ -115,6 +130,14 @@ const SearchParams = () => {
           </select>
         </label>
       </form>
+      {pets.map((pet) => (
+        <Pet
+          name={pet.name}
+          animal={pet.animal}
+          breed={pet.breed}
+          key={pet.id}
+        ></Pet>
+      ))}
     </div>
   );
 };
