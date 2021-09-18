@@ -21962,7 +21962,8 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
-/*const Pet = (props) => {
+/* First Code Format
+const Pet = (props) => {
   return React.createElement("div", {id:"blah"}, [
     React.createElement("h2", {}, props.name),
     React.createElement("h3", {}, props.animal),
@@ -21970,19 +21971,40 @@ var _reactDefault = parcelHelpers.interopDefault(_react);
   ]);
 };*/ //JSX typing format, this and the above commented code
 //do excatly the same thing.
-var _jsxRuntime = require("react/jsx-runtime");
-const Pet = (props)=>{
-    return(/*#__PURE__*/ _jsxRuntime.jsxs("div", {
-        id: "blah",
+/* Second Code Format
+const Pet = (props) => {
+  return (
+    <div id="blah">
+      <h2>{props.name}</h2>
+      <h3>{props.animal}</h3>
+      <h3>{props.breed}</h3>
+    </div>
+  );
+};*/ var _jsxRuntime = require("react/jsx-runtime");
+const Pet = ({ name , animal , breed , images , location , id  })=>{
+    let hero = "http://pets-images.dev-apis.com/pets/none.jpg";
+    if (images.length) hero = images[0];
+    return(/*#__PURE__*/ _jsxRuntime.jsxs("a", {
+        href: `/details/${id}`,
+        className: "pet",
         children: [
-            /*#__PURE__*/ _jsxRuntime.jsx("h2", {
-                children: props.name
+            /*#__PURE__*/ _jsxRuntime.jsx("div", {
+                className: "image-container",
+                children: /*#__PURE__*/ _jsxRuntime.jsx("img", {
+                    src: hero,
+                    alt: name
+                })
             }),
-            /*#__PURE__*/ _jsxRuntime.jsx("h3", {
-                children: props.animal
-            }),
-            /*#__PURE__*/ _jsxRuntime.jsx("h3", {
-                children: props.breed
+            /*#__PURE__*/ _jsxRuntime.jsxs("div", {
+                className: "info",
+                children: [
+                    /*#__PURE__*/ _jsxRuntime.jsx("h1", {
+                        children: name
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsx("h2", {
+                        children: `${animal} — ${breed} — ${location}`
+                    })
+                ]
             })
         ]
     }));
@@ -22969,16 +22991,18 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _pet = require("./Pet");
 var _petDefault = parcelHelpers.interopDefault(_pet);
+var _results = require("./Results");
+var _resultsDefault = parcelHelpers.interopDefault(_results);
 var _useBreedList = require("./useBreedList");
 var _useBreedListDefault = parcelHelpers.interopDefault(_useBreedList);
 var _jsxRuntime = require("react/jsx-runtime");
 var _s = $RefreshSig$();
 const ANIMALS = [
-    "dog",
+    "bird",
     "cat",
-    "bat",
-    "fish",
-    "animalia"
+    "dog",
+    "rabbit",
+    "reptile"
 ];
 const BREEDS = [
     "Pug",
@@ -23109,12 +23133,9 @@ const SearchParams = ()=>{
                     })
                 ]
             }),
-            pets.map((pet)=>/*#__PURE__*/ _jsxRuntime.jsx(_petDefault.default, {
-                    name: pet.name,
-                    animal: pet.animal,
-                    breed: pet.breed
-                }, pet.id)
-            )
+            /*#__PURE__*/ _jsxRuntime.jsx(_resultsDefault.default, {
+                pets: pets
+            })
         ]
     }));
 };
@@ -23122,7 +23143,17 @@ _s(SearchParams, "P1BMH8kstYgjOWxTH52N4IUFwkY=", false, function() {
     return [_useBreedListDefault.default];
 });
 _c = SearchParams;
-exports.default = SearchParams;
+exports.default = SearchParams; //Trying wrapping the component in a function scope
+function newFunction(pets) {
+    return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
+        children: pets.map((pet)=>/*#__PURE__*/ _jsxRuntime.jsx(_petDefault.default, {
+                name: pet.name,
+                animal: pet.animal,
+                breed: pet.breed
+            }, pet.id)
+        )
+    }));
+}
 var _c;
 $RefreshReg$(_c, "SearchParams");
 
@@ -23131,7 +23162,7 @@ $RefreshReg$(_c, "SearchParams");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"6TuXu","./Pet":"fdkC0","react/jsx-runtime":"8xIwr","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5V79J","./useBreedList":"2sKmO"}],"2sKmO":[function(require,module,exports) {
+},{"react":"6TuXu","./Pet":"fdkC0","react/jsx-runtime":"8xIwr","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5V79J","./useBreedList":"2sKmO","./Results":"gywXv"}],"2sKmO":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$5f15 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -23177,6 +23208,44 @@ _s(useBreedList, "fwO6kCJGACy4buvWsnD+NOmO304=");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"6TuXu","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5V79J"}]},["2rAXy","5MabY","g1M29"], "g1M29", "parcelRequireaddb")
+},{"react":"6TuXu","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5V79J"}],"gywXv":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$8f69 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$8f69.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _pet = require("./Pet");
+var _petDefault = parcelHelpers.interopDefault(_pet);
+var _jsxRuntime = require("react/jsx-runtime");
+const Results = ({ pets  })=>{
+    var internalComponent;
+    if (!pets.length) internalComponent = /*#__PURE__*/ _jsxRuntime.jsx("h2", {
+        children: "No Pets found"
+    });
+    else internalComponent = pets.map((pet)=>/*#__PURE__*/ _jsxRuntime.jsx(_petDefault.default, {
+            name: pet.name,
+            animal: pet.animal,
+            breed: pet.breed
+        })
+    );
+    return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
+        className: "search",
+        children: internalComponent
+    }));
+};
+_c = Results;
+exports.default = Results;
+var _c;
+$RefreshReg$(_c, "Results");
+
+  $parcel$ReactRefreshHelpers$8f69.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"./Pet":"fdkC0","react/jsx-runtime":"8xIwr","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5V79J"}]},["2rAXy","5MabY","g1M29"], "g1M29", "parcelRequireaddb")
 
 //# sourceMappingURL=index.10fa75bc.js.map

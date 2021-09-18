@@ -1,8 +1,9 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import Pet from "./Pet";
+import Results from "./Results";
 import useBreedList from "./useBreedList";
-const ANIMALS = ["dog", "cat", "bat", "fish", "animalia"];
+const ANIMALS = ["bird", "cat", "dog", "rabbit", "reptile"];
 const BREEDS = ["Pug", "arnold", "dave", "shawky", "bondo2"];
 
 const SearchParams = () => {
@@ -130,6 +131,16 @@ const SearchParams = () => {
           </select>
         </label>
       </form>
+      <Results pets={pets}></Results>
+    </div>
+  );
+};
+
+export default SearchParams;
+//Trying wrapping the component in a function scope
+function newFunction(pets) {
+  return (
+    <div>
       {pets.map((pet) => (
         <Pet
           name={pet.name}
@@ -140,6 +151,4 @@ const SearchParams = () => {
       ))}
     </div>
   );
-};
-
-export default SearchParams;
+}
