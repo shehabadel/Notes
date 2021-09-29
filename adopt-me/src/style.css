@@ -52,8 +52,12 @@ body {
   overflow: hidden;
   margin: 25px 0;
   border-bottom: #333 2px solid;
+  padding:10px;
 }
 
+.pet:hover{
+background-color: #efe0e152;
+}
 .pet img {
   width: 100px;
   min-height: 100px;

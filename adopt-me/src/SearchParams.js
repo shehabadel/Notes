@@ -1,5 +1,6 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import ThemeContext from "./ThemeContext";
 import Pet from "./Pet";
 import Results from "./Results";
 import useBreedList from "./useBreedList";
@@ -41,10 +42,13 @@ const SearchParams = () => {
     then do something (the something here being an effect.) In our case, we want the user to see our UI first then
     we want to make a request to the API so we can that initial list of pets.
    */
-  const [location, setLocation] = useState("Seattle, WA");
+  const [location, setLocation] = useState("");
   const [animal, setAnimal] = useState("");
   const [breed, setBreed] = useState("");
   const [breedList] = useBreedList(animal);
+  //Whatever is put on const theme in App.js comes out here
+  //as it is a hook, but globally.
+  const [theme, setTheme] = useContext(ThemeContext);
 
   //this gonna have an array of all pets coming back from the api
   const [pets, setPet] = useState([]);
@@ -130,6 +134,18 @@ const SearchParams = () => {
             ))}
           </select>
         </label>
+        <label htmlFor="theme">
+          Theme
+          <select value={theme}
+            onChange={e => setTheme(e.target.value)}
+            onBlur={e => setTheme(e.target.value)}
+          >
+            <option value="darkblue">Dark Blue</option>
+            <option value="pink">Pink</option>
+            <option value="peru">Peru</option>
+          </select>
+        </label>
+        <button style={{ backgroundColor: theme }}>Submit</button>
       </form>
       <Results pets={pets}></Results>
     </div>
@@ -137,18 +153,3 @@ const SearchParams = () => {
 };
 
 export default SearchParams;
-//Trying wrapping the component in a function scope
-function newFunction(pets) {
-  return (
-    <div>
-      {pets.map((pet) => (
-        <Pet
-          name={pet.name}
-          animal={pet.animal}
-          breed={pet.breed}
-          key={pet.id}
-        ></Pet>
-      ))}
-    </div>
-  );
-}

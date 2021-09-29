@@ -1,7 +1,5 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import Pet from "./Pet.js";
-import SearchParams from "./SearchParams.js";
+import React, { StrictMode, useState } from "react";
+
 
 //Plugins to install
 //Eslint, Babel, Prettier, React
@@ -13,20 +11,46 @@ import SearchParams from "./SearchParams.js";
 
 //JSX -> Check Pet.js
 //Hooks -> Check SearchParams.js
+//Router and Routes -> Details.js
+import Details from './Details';
+import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
+import { render } from "react-dom";
+import SearchParams from "./SearchParams";
+import ThemeContext from "./ThemeContext";
 
 const App = () => {
+  const theme = useState("darkblue");
+
+
   return (
-    <div id="root">
-      <h1>Adopt Me!</h1>
-      <Pet name="Luna" animal="Dog" breed="Cocktaiel"></Pet>
-      <SearchParams></SearchParams>
-    </div>
+    //TODO Check Context
+    <ThemeContext.Provider value={theme}>
+      <div>
+        <h1>Adopt Me!</h1>
+        <Router>
+          <header>
+            <Link to="/">
+              <h1>Adopt Me!</h1>
+            </Link>
+          </header>
+          <Switch>
+            <Route path="/details/:id">
+              <Details />
+            </Route>
+            <Route path="/">
+              <SearchParams />
+            </Route>
+          </Switch>
+        </Router>
+      </div>
+    </ThemeContext.Provider>
   );
 };
 
+render(<App />, document.getElementById("root"));
+
 //ReactDOM going to render our component App (create an instance of it using createElement) which we defined above
 //and put it inside root div
-ReactDOM.render(<App></App>, document.getElementById("root"));
 //You cannot pass data from child to parent
 //like from Pet to App
 //There are several methodologies to do that, but mainly
