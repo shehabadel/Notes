@@ -8,7 +8,7 @@ function App() {
     <div>
       <h1>Hello World</h1>
       <StateComponent initialCounter={2}></StateComponent>
-      <EffectComponent></EffectComponent>
+      <EffectComponent />
     </div>
   );
 }
