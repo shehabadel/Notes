@@ -1,8 +1,13 @@
 import './App.css';
+import StateComponent from './Hooks/State';
 
 function App() {
   return (
-    <h1>Hello World</h1>
+
+    <div>
+      <h1>Hello World</h1>
+      <StateComponent></StateComponent>
+    </div>
   );
 }
 
