@@ -5,13 +5,17 @@ import { useState } from "react";
 //true in useState is the default value
 //so when it is first rendered it will be true
 
-const StateComponent = () => {
-    function increment(counter) {
-        console.log("hey")
-        return counter++;
-    }
-    var [counter, setCounter] = useState(0);
+//for setCounter problem, it is preferred to use useReducer hook
+const StateComponent = ({ initialCounter }) => {
+    var [counter, setCounter] = useState(initialCounter);
     const [isGreen, setIsGreen] = useState(true);
+
+    //in order to pass a function inside useState
+    //wrap the setState inside a function and pass it
+    //inside as in line 34
+    function increment() {
+        return setCounter(counter + 1);
+    }
     return (
         <div>
             <h2>Use State Examples</h2>
@@ -26,7 +30,8 @@ const StateComponent = () => {
             <h3>
                 {counter}
             </h3>
-            <button onClick={() => setCounter(increment(counter))}>
+            <button onClick={() => setCounter(initialCounter)}>Reset</button>
+            <button onClick={increment}>
                 ➕
             </button>
         </div>

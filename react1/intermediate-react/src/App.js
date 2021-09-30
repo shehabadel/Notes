@@ -6,7 +6,7 @@ function App() {
 
     <div>
       <h1>Hello World</h1>
-      <StateComponent></StateComponent>
+      <StateComponent initialCounter={2}></StateComponent>
     </div>
   );
 }
