@@ -3,7 +3,8 @@ import EffectComponent from './Hooks/Effect';
 import StateComponent from './Hooks/State';
 import ContextComponent from './Hooks/Context';
 import RefComponent from './Hooks/Ref';
-
+import ReducerComponent from './Hooks/Reducer';
+import MemoComponent from './Hooks/Memo';
 function App() {
   return (
 
@@ -13,6 +14,8 @@ function App() {
       <EffectComponent />
       <ContextComponent />
       <RefComponent />
+      <ReducerComponent />
+      <MemoComponent />
     </div>
   );
 }

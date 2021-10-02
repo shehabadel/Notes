@@ -84,8 +84,8 @@ const LevelFive = () => {
                 //Therefore it assigns properties, versus copying or defining new properties.
                 //This may make it unsuitable for merging new properties into a prototype
                 //if the merge sources contain getters.
-
-                setUser(Object.assign({ suffix: user.suffix }, user));
+                console.log(user);
+                setUser(Object.assign({}, user, { suffix: user.suffix }));
             }}> Increment</button>
         </div>
     )
