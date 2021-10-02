@@ -6,6 +6,7 @@ import RefComponent from './Hooks/Ref';
 import ReducerComponent from './Hooks/Reducer';
 import MemoComponent from './Hooks/Memo';
 import CallbackComponent from './Hooks/Callback';
+import LayoutCompoment from './Hooks/Layout';
 function App() {
   return (
 
@@ -18,6 +19,7 @@ function App() {
       <ReducerComponent />
       <MemoComponent />
       <CallbackComponent />
+      <LayoutCompoment />
     </div>
   );
 }
