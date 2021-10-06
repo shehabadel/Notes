@@ -1,4 +1,4 @@
-import { useState, useLayoutEffect, useEffect, useRef } from "react";
+import { useState, useLayoutEffect, useRef } from "react";
 
 //it mainly captures the components updates
 //acts like componentDidUpdate() from class components
@@ -14,7 +14,7 @@ const LayoutCompoment = () => {
     useLayoutEffect(() => {
         setHeight(el.current.clientHeight);
         setWidth(el.current.clientWidth);
-    });
+    }, []);
 
     return (
         <div>

@@ -18,7 +18,10 @@ const MemoComponent = () => {
     const [isGreen, setGreen] = useState(false)
     return (
         <div>
-            <h1 onClick={() => setGreen(!isGreen)} style={{ color: isGreen ? "green" : "red" }}>Use Memo Example</h1>
+            <h1 onClick={() => setGreen(!isGreen)}
+                style={{ color: isGreen ? "green" : "red" }}
+                className="px-2 border-8 bg-blue-600"
+            >Use Memo Example</h1>
             <h2>Fibonacci of {num} is {fib} </h2>
             <button onClick={() => setNum(num + 1)}>➕</button>
         </div>
